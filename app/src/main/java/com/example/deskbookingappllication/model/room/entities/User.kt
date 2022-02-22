@@ -1,4 +1,4 @@
-package com.example.deskbookingappllication.model
+package com.example.deskbookingappllication.model.room.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

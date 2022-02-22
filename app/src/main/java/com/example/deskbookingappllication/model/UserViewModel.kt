@@ -4,8 +4,9 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.deskbookingappllication.model.room.UserDatabase
+import com.example.deskbookingappllication.model.room.databases.UserDatabase
 import com.example.deskbookingappllication.model.room.UserRepository
+import com.example.deskbookingappllication.model.room.entities.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -19,7 +20,7 @@ class UserViewModel(application: Application) : AndroidViewModel(
         repository = UserRepository(userDao)
         readAllData = repository.readAllData
     }
-    fun addUser(user:User){
+    fun addUser(user: User){
         viewModelScope.launch(Dispatchers.IO) {
             repository.addUser(user)
         }
