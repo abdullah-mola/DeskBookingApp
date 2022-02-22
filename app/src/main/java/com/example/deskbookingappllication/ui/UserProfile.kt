@@ -1,4 +1,4 @@
-package com.example.deskbookingappllication
+package com.example.deskbookingappllication.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

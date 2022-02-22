@@ -1,4 +1,4 @@
-package com.example.deskbookingappllication
+package com.example.deskbookingappllication.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
