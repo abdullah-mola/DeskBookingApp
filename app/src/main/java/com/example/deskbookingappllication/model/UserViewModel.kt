@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.deskbookingappllication.model.api.LoginRequestBody
+import com.example.deskbookingappllication.model.api.RetrofitInstance
 import com.example.deskbookingappllication.model.room.databases.UserDatabase
 import com.example.deskbookingappllication.model.room.UserRepository
 import com.example.deskbookingappllication.model.room.entities.User
@@ -25,5 +27,12 @@ class UserViewModel(application: Application) : AndroidViewModel(
             repository.addUser(user)
         }
     }
+    fun login(user:LoginRequestBody){
+        val api = RetrofitInstance.userApi
+        viewModelScope.launch(Dispatchers.IO){
+            api.userLogin(user)
+        }
+    }
+
 
 }
