@@ -32,11 +32,7 @@ class Login : Fragment() {
                 val loginreq =userModel.login(user)
 
 
-
             }
-
-
-
 
         return binding.root
     }

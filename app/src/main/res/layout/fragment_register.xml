@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    ​
+
     <TextView
         android:id="@+id/tvLogin"
         android:layout_width="wrap_content"
@@ -15,7 +15,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.25" />
-    ​
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txt_Il_Firstname"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -26,14 +26,14 @@
         app:endIconMode="clear_text"
         app:layout_constraintTop_toBottomOf="@+id/tvLogin"
         app:startIconDrawable="@drawable/person_icon">
-        ​
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtInputEditTextFirstname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="200dp" />
     </com.google.android.material.textfield.TextInputLayout>
-    ​
+
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
@@ -44,14 +44,14 @@
         app:layout_constraintStart_toEndOf="@+id/txt_Il_Firstname"
         app:layout_constraintTop_toBottomOf="@+id/tvLogin"
         app:startIconDrawable="@drawable/person_icon">
-        ​
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtInputEditTextLastname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="200dp" />
     </com.google.android.material.textfield.TextInputLayout>
-    ​
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txt_Il_Email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -64,7 +64,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_Il_Firstname"
         app:startIconDrawable="@drawable/ic_email">
-        ​
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_Login_Email"
             android:layout_width="match_parent"
@@ -84,14 +84,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_Il_Email"
         app:startIconDrawable="@drawable/person_icon">
-        ​
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_Department"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
-    ​
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txt_Il_Password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -104,7 +104,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_Il_Department"
         app:startIconDrawable="@drawable/password_icon">
-        ​
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_Login_Password"
             android:layout_width="match_parent"
