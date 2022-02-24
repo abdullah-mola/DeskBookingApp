@@ -36,8 +36,8 @@ class Login : Fragment() {
 
         }
         binding.btnRegister.setOnClickListener {
-            NavHostFragment.findNavController(this)
-                .navigate(LoginDirections.actionLoginToRegister())
+//            NavHostFragment.findNavController(this)
+//                .navigate(LoginDirections.actionLoginToRegister())
         }
             binding.btnLogin.setOnClickListener {
                 userEmail = binding.etLoginEmail.text.toString()
