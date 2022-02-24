@@ -3,7 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/abdul/Desktop/deskbookingsystem-abdullah-u-hadi-u-jamal/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/abdul/Desktop/deskbookingsystem-abdullah-u-hadi-u-jamal/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1455" />
+        <entry key="..\:/Users/abdul/Desktop/deskbookingsystem-abdullah-u-hadi-u-jamal/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1455" />
+        <entry key="..\:/Users/abdul/Desktop/deskbookingsystem-abdullah-u-hadi-u-jamal/app/src/main/res/drawable/password_icon.xml" value="0.1455" />
+        <entry key="..\:/Users/abdul/Desktop/deskbookingsystem-abdullah-u-hadi-u-jamal/app/src/main/res/drawable/person_icon.xml" value="0.1455" />
+        <entry key="..\:/Users/abdul/Desktop/deskbookingsystem-abdullah-u-hadi-u-jamal/app/src/main/res/drawable/profile.xml" value="0.1455" />
+        <entry key="..\:/Users/abdul/Desktop/deskbookingsystem-abdullah-u-hadi-u-jamal/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/abdul/Desktop/deskbookingsystem-abdullah-u-hadi-u-jamal/app/src/main/res/layout/fragment_favoriet.xml" value="0.240625" />
+        <entry key="..\:/Users/abdul/Desktop/deskbookingsystem-abdullah-u-hadi-u-jamal/app/src/main/res/layout/fragment_login.xml" value="0.26875" />
+        <entry key="..\:/Users/abdul/Desktop/deskbookingsystem-abdullah-u-hadi-u-jamal/app/src/main/res/layout/fragment_register.xml" value="0.30416666666666664" />
+        <entry key="..\:/Users/abdul/Desktop/deskbookingsystem-abdullah-u-hadi-u-jamal/app/src/main/res/layout/fragment_reseveration.xml" value="0.240625" />
+        <entry key="..\:/Users/abdul/Desktop/deskbookingsystem-abdullah-u-hadi-u-jamal/app/src/main/res/layout/fragment_usesr_profile.xml" value="0.240625" />
         <entry key="..\:/Users/hadeh/AndroidStudioProjects/DeskBookingAppllication/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/hadeh/AndroidStudioProjects/DeskBookingAppllication/app/src/main/res/layout/fragment_booking_plan.xml" value="0.25" />
         <entry key="..\:/Users/hadeh/AndroidStudioProjects/DeskBookingAppllication/app/src/main/res/layout/fragment_favoriet.xml" value="0.13632246376811594" />
