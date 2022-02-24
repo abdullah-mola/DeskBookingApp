@@ -1,0 +1,64 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "26a139bb1823fe9d75587fb8ac645c8a",
+    "entities": [
+      {
+        "tableName": "desk_entity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`desk_id` INTEGER NOT NULL, `lable` TEXT NOT NULL, `office` TEXT NOT NULL, `equipment` TEXT NOT NULL, `map` TEXT NOT NULL, `fixDeskUserId` TEXT NOT NULL, PRIMARY KEY(`desk_id`))",
+        "fields": [
+          {
+            "fieldPath": "desk_id",
+            "columnName": "desk_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lable",
+            "columnName": "lable",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "office",
+            "columnName": "office",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "equipment",
+            "columnName": "equipment",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "map",
+            "columnName": "map",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fixDeskUserId",
+            "columnName": "fixDeskUserId",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "desk_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '26a139bb1823fe9d75587fb8ac645c8a')"
+    ]
+  }
+}

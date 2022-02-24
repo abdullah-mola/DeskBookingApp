@@ -1,0 +1,46 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "437688550b7d38524d58cb50804954c0",
+    "entities": [
+      {
+        "tableName": "office_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`office_id` INTEGER NOT NULL, `office_name` TEXT NOT NULL, `map` TEXT NOT NULL, PRIMARY KEY(`office_id`))",
+        "fields": [
+          {
+            "fieldPath": "office_id",
+            "columnName": "office_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "office_name",
+            "columnName": "office_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "map",
+            "columnName": "map",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "office_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '437688550b7d38524d58cb50804954c0')"
+    ]
+  }
+}
