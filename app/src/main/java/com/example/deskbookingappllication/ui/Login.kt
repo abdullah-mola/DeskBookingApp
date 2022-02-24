@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import com.example.deskbookingappllication.R
 import com.example.deskbookingappllication.databinding.FragmentLoginBinding
 import com.example.deskbookingappllication.model.UserViewModel
@@ -27,10 +29,17 @@ class Login : Fragment() {
             binding.btnLogin.setOnClickListener {
                 userEmail = binding.etLoginEmail.text.toString()
                 userPassword = binding.etLoginPassword.text.toString()
-                user= LoginRequestBody(userEmail,userPassword)
+                user = LoginRequestBody(userEmail,userPassword)
 
-                val loginreq =userModel.login(user)
+                userModel.login(user)
+
+               Navigation.findNavController(binding.root).navigate(LoginDirections.actionLoginToBookingPlan())
+
+
             }
+
+
+
 
         return binding.root
     }
