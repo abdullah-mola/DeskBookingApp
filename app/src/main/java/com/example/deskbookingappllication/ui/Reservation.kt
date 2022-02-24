@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.NavHostFragment
 import com.example.deskbookingappllication.databinding.FragmentReseverationBinding
 
 class Reservation : Fragment() {
@@ -16,7 +17,8 @@ class Reservation : Fragment() {
     ): View? {
         _binding = FragmentReseverationBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
-        return view
+
+        return binding.root
     }
 
 }

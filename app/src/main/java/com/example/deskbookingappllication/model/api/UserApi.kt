@@ -1,16 +1,16 @@
 package com.example.deskbookingappllication.model.api
 
-import okhttp3.RequestBody
+import com.example.deskbookingappllication.model.User
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface UserApi {
 
-
     @POST("register")
-    suspend fun userRegister(@Body body: RequestBody)
+    suspend fun userRegister(@Body body: User): Response<User>
 
     @POST("login")
-    suspend fun userLogin(@Body request: LoginRequestBody): LoginResponse
+    suspend fun userLogin(@Body request: LoginRequestBody): Response<LoginResponse>
 
 }

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.deskbookingappllication.databinding.FragmentFavorietBinding
 
 class Favorites : Fragment() {
-    private var _binding:FragmentFavorietBinding? = null
+    private var _binding: FragmentFavorietBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -18,8 +18,7 @@ class Favorites : Fragment() {
         _binding = FragmentFavorietBinding.inflate(inflater, container, false)
 
 
-
-        return view
+        return binding.root
     }
 
 }
