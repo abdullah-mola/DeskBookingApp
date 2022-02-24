@@ -13,7 +13,7 @@
         android:id="@+id/navFragmentContainer"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/naviga"
+        app:navGraph="@navigation/mynav"
         />
         android:layout_above="@id/tabLayout"/>
 

@@ -29,7 +29,8 @@ class Login : Fragment() {
                 userPassword = binding.etLoginPassword.text.toString()
                 user= LoginRequestBody(userEmail,userPassword)
 
-                userModel.login(user)
+                val loginreq =userModel.login(user)
+
 
 
             }
@@ -37,7 +38,7 @@ class Login : Fragment() {
 
 
 
-        return view
+        return binding.root
     }
 
 }
