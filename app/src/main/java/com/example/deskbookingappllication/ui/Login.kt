@@ -18,26 +18,26 @@ import com.example.deskbookingappllication.model.api.LoginRequestBody
 class Login : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
-    lateinit var user:LoginRequestBody
-    val userModel: UserViewModel by activityViewModels()
-    lateinit var userEmail:String
-    lateinit var userPassword:String
-
+    private lateinit var user: LoginRequestBody
+    private val userModel: UserViewModel by activityViewModels()
+    private lateinit var userEmail: String
+    private lateinit var userPassword: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-            binding.btnLogin.setOnClickListener {
-                userEmail = binding.etLoginEmail.text.toString()
-                userPassword = binding.etLoginPassword.text.toString()
-                user = LoginRequestBody(userEmail,userPassword)
-                userModel.login(user)
+        binding.btnLogin.setOnClickListener {
+            userEmail = binding.etLoginEmail.text.toString()
+            userPassword = binding.etLoginPassword.text.toString()
+            user = LoginRequestBody(userEmail, userPassword)
+            userModel.login(user)
 
-            }
+        }
         binding.btnRegister.setOnClickListener {
-            NavHostFragment.findNavController(this).navigate(LoginDirections.actionLoginToRegister())
+            NavHostFragment.findNavController(this)
+                .navigate(LoginDirections.actionLoginToRegister())
         }
         return binding.root
     }
