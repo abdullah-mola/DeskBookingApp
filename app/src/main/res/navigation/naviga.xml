@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/naviga">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/naviga"
+    app:startDestination="@id/login">
 
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.deskbookingappllication.ui.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_bookingPlan"
+            app:destination="@id/bookingPlan" />
+    </fragment>
+    <fragment
+        android:id="@+id/favorites"
+        android:name="com.example.deskbookingappllication.ui.Favorites"
+        android:label="fragment_favoriet"
+        tools:layout="@layout/fragment_favoriet" >
+        <action
+            android:id="@+id/action_favorites_to_bookingPlan"
+            app:destination="@id/bookingPlan" />
+        <action
+            android:id="@+id/action_favorites_to_userProfile"
+            app:destination="@id/userProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingPlan"
+        android:name="com.example.deskbookingappllication.ui.BookingPlan"
+        android:label="fragment_booking_plan"
+        tools:layout="@layout/fragment_booking_plan" >
+        <action
+            android:id="@+id/action_bookingPlan_to_userProfile"
+            app:destination="@id/userProfile" />
+        <action
+            android:id="@+id/action_bookingPlan_to_reservation"
+            app:destination="@id/reservation" />
+        <action
+            android:id="@+id/action_bookingPlan_to_favorites"
+            app:destination="@id/favorites" />
+    </fragment>
+    <fragment
+        android:id="@+id/reservation"
+        android:name="com.example.deskbookingappllication.ui.Reservation"
+        android:label="fragment_reseveration"
+        tools:layout="@layout/fragment_reseveration" />
+    <fragment
+        android:id="@+id/userProfile"
+        android:name="com.example.deskbookingappllication.ui.UserProfile"
+        android:label="fragment_usesr_profile"
+        tools:layout="@layout/fragment_usesr_profile" >
+        <action
+            android:id="@+id/action_userProfile_to_favorites"
+            app:destination="@id/favorites" />
+        <action
+            android:id="@+id/action_userProfile_to_bookingPlan"
+            app:destination="@id/bookingPlan" />
+    </fragment>
 </navigation>
