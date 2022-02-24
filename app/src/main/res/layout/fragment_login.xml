@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    android:focusable="true"
     tools:context=".ui.Login">
 
 
@@ -26,6 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:nextFocusForward="@id/txt_Il_Password"
         android:hint="@string/e_mail"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,6 +60,7 @@
             android:id="@+id/et_Login_Password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:imeOptions="actionGo"
             android:inputType="textPassword"
             />
     </com.google.android.material.textfield.TextInputLayout>
