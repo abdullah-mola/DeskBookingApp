@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Jamal/AndroidStudioProjects/deskbookingsystem-abdullah-u-hadi-u-hossein/app/src/main/res/layout/fragment_favoriet.xml" value="0.1" />
+        <entry key="..\:/Users/Jamal/AndroidStudioProjects/deskbookingsystem-abdullah-u-hadi-u-hossein/app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/Users/Jamal/AndroidStudioProjects/deskbookingsystem-abdullah-u-hadi-u-hossein/app/src/main/res/layout/fragment_register.xml" value="0.1" />
+        <entry key="..\:/Users/Jamal/AndroidStudioProjects/deskbookingsystem-abdullah-u-hadi-u-hossein/app/src/main/res/layout/fragment_reseveration.xml" value="0.25" />
+        <entry key="..\:/Users/Jamal/AndroidStudioProjects/deskbookingsystem-abdullah-u-hadi-u-hossein/app/src/main/res/layout/fragment_usesr_profile.xml" value="0.1" />
         <entry key="..\:/Users/hadeh/AndroidStudioProjects/DeskBookingAppllication/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/hadeh/AndroidStudioProjects/DeskBookingAppllication/app/src/main/res/layout/fragment_booking_plan.xml" value="0.25" />
         <entry key="..\:/Users/hadeh/AndroidStudioProjects/DeskBookingAppllication/app/src/main/res/layout/fragment_favoriet.xml" value="0.13632246376811594" />

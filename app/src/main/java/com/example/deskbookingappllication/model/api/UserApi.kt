@@ -10,7 +10,7 @@ interface UserApi {
 
 
     @POST("register")
-    suspend fun userRegister(@Body body: RequestBody):Response<User>
+    suspend fun userRegister(@Body body: User):Response<User>
 
     @POST("login")
     suspend fun userLogin(@Body request: LoginRequestBody): Response<LoginResponse>
