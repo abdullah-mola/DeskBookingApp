@@ -16,9 +16,11 @@ class UserViewModel(application: Application) : AndroidViewModel(
     fun login(user: LoginRequestBody) {
         val api = RetrofitInstance.userApi
         viewModelScope.launch(Dispatchers.IO) {
-            api.userLogin(user)
+
+          api.userLogin(user)
+
+
         }
     }
-
 
 }

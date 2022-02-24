@@ -5,7 +5,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val BASE_URL = "deskbooking.dev.webundsoehne.com/api/"
+private const val BASE_URL = "https://deskbooking.dev.webundsoehne.com/api/"
 
 object RetrofitInstance {
 
@@ -17,9 +17,10 @@ object RetrofitInstance {
         httpClient.addInterceptor(logging)
         return httpClient.build()
     }
+
     private val retrofit by lazy {
         Retrofit.Builder().baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create()).client(getHttpClient())
             .build()
     }
 
