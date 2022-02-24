@@ -5,12 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.NavHost
-import androidx.navigation.NavHostController
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import com.example.deskbookingappllication.databinding.FragmentLoginBinding
 import com.example.deskbookingappllication.model.UserViewModel
 import com.example.deskbookingappllication.model.api.LoginRequestBody
