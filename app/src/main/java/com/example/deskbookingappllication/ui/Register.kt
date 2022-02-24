@@ -1,24 +1,22 @@
 package com.example.deskbookingappllication.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.deskbookingappllication.databinding.FragmentFavorietBinding
+import androidx.fragment.app.Fragment
+import com.example.deskbookingappllication.databinding.FragmentRegisterBinding
 
-class Favorites : Fragment() {
-    private var _binding: FragmentFavorietBinding? = null
+class Register : Fragment() {
+    private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentFavorietBinding.inflate(inflater, container, false)
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
 
-
-        return binding.root
+        return view
     }
-
 }

@@ -6,10 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment
-import com.example.deskbookingappllication.R
 import com.example.deskbookingappllication.databinding.FragmentLoginBinding
 import com.example.deskbookingappllication.model.UserViewModel
 import com.example.deskbookingappllication.model.api.LoginRequestBody
@@ -33,13 +29,7 @@ class Login : Fragment() {
 
                 userModel.login(user)
 
-               Navigation.findNavController(binding.root).navigate(LoginDirections.actionLoginToBookingPlan())
-
-
             }
-
-
-
 
         return binding.root
     }
