@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.NavHostFragment
 import com.example.deskbookingappllication.databinding.FragmentLoginBinding
 import com.example.deskbookingappllication.model.UserViewModel
 import com.example.deskbookingappllication.model.api.LoginRequestBody
@@ -31,8 +32,8 @@ class Login : Fragment() {
 
         }
         binding.btnRegister.setOnClickListener {
-//            NavHostFragment.findNavController(this)
-//                .navigate(LoginDirections.actionLoginToRegister())
+            NavHostFragment.findNavController(this)
+                .navigate(LoginDirections.actionLoginToRegister())
         }
             binding.btnLogin.setOnClickListener {
                 userEmail = binding.etLoginEmail.text.toString()
