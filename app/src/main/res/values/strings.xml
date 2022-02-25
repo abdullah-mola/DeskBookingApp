@@ -2,11 +2,28 @@
     <string name="app_name">DeskBookingAppllication</string>
     <string name="e_mail">E-mail</string>
     <string name="password">Password</string>
-    <string name="loginTitle">WELCOME</string>
     <string name="login">LOGIN</string>
+    <string name="register">REGISTER</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="loginTitle">WELCOME</string>
     <string name="sign_up">SIGN UP</string>
     <string name="firstname">Firstname</string>
     <string name="lastname">Lastname</string>
     <string name="department">Department</string>
-    <string name="register">Register</string>
 </resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
