@@ -9,18 +9,29 @@ private const val BASE_URL = "https://deskbooking.dev.webundsoehne.com/api/"
 
 object RetrofitInstance {
 
-    private fun getHttpClient(): OkHttpClient {
-        val logging = HttpLoggingInterceptor()
-        logging.level = HttpLoggingInterceptor.Level.BODY
+    var authToken: String? = null
+    var email: String = ""
 
-        val httpClient = OkHttpClient.Builder()
-        httpClient.addInterceptor(logging)
-        return httpClient.build()
-    }
+
+    private val okHttpClient: OkHttpClient = OkHttpClient.Builder()
+        .addInterceptor { chain ->
+            if (authToken != null) {
+                val newRequest = chain.request()
+                    .newBuilder()
+                    .addHeader("Authorization", "Bearer $authToken")
+                    .build()
+                chain.proceed(newRequest)
+            } else {
+                chain.proceed(chain.request())
+            }
+
+        }
+        .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+        .build()
 
     private val retrofit by lazy {
         Retrofit.Builder().baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create()).client(getHttpClient())
+            .addConverterFactory(GsonConverterFactory.create()).client(okHttpClient)
             .build()
     }
 

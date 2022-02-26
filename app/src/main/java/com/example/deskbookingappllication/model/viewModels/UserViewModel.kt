@@ -1,4 +1,4 @@
-package com.example.deskbookingappllication.model
+package com.example.deskbookingappllication.model.viewModels
 
 import android.app.Application
 import android.util.Log
@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.deskbookingappllication.api.LoginRequestBody
 import com.example.deskbookingappllication.api.LoginResponse
 import com.example.deskbookingappllication.api.RetrofitInstance
+import com.example.deskbookingappllication.model.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -22,8 +23,7 @@ class UserViewModel(application: Application) : AndroidViewModel(
     private var responseCode = MutableLiveData<Int>()
     val statusCode: LiveData<Int> get() = responseCode
     private var _userLogin = MutableLiveData<LoginResponse>()
-    val userLogin: LiveData<LoginResponse> get() = _userLogin
-
+    val userLoginData: LiveData<LoginResponse> get() = _userLogin
     fun login(user: LoginRequestBody) {
 
 

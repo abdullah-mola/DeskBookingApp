@@ -9,8 +9,9 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.NavHostFragment
 import com.example.deskbookingappllication.databinding.FragmentLoginBinding
-import com.example.deskbookingappllication.model.UserViewModel
+import com.example.deskbookingappllication.model.viewModels.UserViewModel
 import com.example.deskbookingappllication.api.LoginRequestBody
+import com.example.deskbookingappllication.api.RetrofitInstance
 
 class Login : Fragment() {
     private var _binding: FragmentLoginBinding? = null
@@ -24,6 +25,11 @@ class Login : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        userModel.userLoginData.observe(viewLifecycleOwner){
+            var token = it.token
+            RetrofitInstance.authToken = token
+
+        }
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         binding.btnLogin.setOnClickListener {
             userEmail = binding.etLoginEmail.text.toString()
