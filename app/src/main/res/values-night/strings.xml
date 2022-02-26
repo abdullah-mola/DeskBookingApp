@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="login">LOGIN</string>
+    <string name="office_image">Office Image</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.deskbookingappllication.model.api
+package com.example.deskbookingappllication.api
 
 data class LoginRequestBody(
     val email: String,

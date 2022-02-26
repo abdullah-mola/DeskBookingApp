@@ -1,4 +1,4 @@
-package com.example.deskbookingappllication.model.api
+package com.example.deskbookingappllication.api
 
 import com.example.deskbookingappllication.model.User
 import retrofit2.Response
