@@ -1,15 +1,19 @@
 package com.example.deskbookingappllication.ui
 
 import android.os.Bundle
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.NavHostFragment
 import com.example.deskbookingappllication.databinding.FragmentLoginBinding
+
 import com.example.deskbookingappllication.model.UserViewModel
 import com.example.deskbookingappllication.model.api.LoginRequestBody
+import kotlinx.android.synthetic.main.fragment_usesr_profile.*
 
 class Login : Fragment() {
     private var _binding: FragmentLoginBinding? = null
@@ -40,6 +44,8 @@ class Login : Fragment() {
                 userPassword = binding.etLoginPassword.text.toString()
                 user= LoginRequestBody(userEmail,userPassword)
 
+                NavHostFragment.findNavController(this)
+                    .navigate(LoginDirections.actionLoginToBookingPlan())
                 val loginreq =userModel.login(user)
 
 
@@ -47,4 +53,6 @@ class Login : Fragment() {
 
         return binding.root
     }
+
+
 }

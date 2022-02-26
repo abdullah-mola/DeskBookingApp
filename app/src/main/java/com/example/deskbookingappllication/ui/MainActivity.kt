@@ -2,11 +2,13 @@ package com.example.deskbookingappllication.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.drawerlayout.widget.DrawerLayout
 
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -25,19 +27,24 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         //NavController
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navFragmentContainer) as NavHostFragment
         navController = navHostFragment.navController
-        appBarConfiguration = AppBarConfiguration(navController.graph )
+        appBarConfiguration = AppBarConfiguration(navController.graph)
 
+        //bottomNavigation
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigatin_view)
+
+        //remove bottom navigation bar from login and register screen
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            bottomNavigationView.visibility = if (destination.id == R.id.login ||destination.id == R.id.register) {
-                View.GONE
-            } else {
-                View.VISIBLE
-            }
+            bottomNavigationView.visibility =
+                if (destination.id == R.id.login || destination.id == R.id.register) {
+                    View.GONE
+                } else {
+                    View.VISIBLE
+                }
         }
 //
 //    }
@@ -46,23 +53,23 @@ class MainActivity : AppCompatActivity() {
         loadFragment(BookingPlan.newInstance())
 
         bottom_navigatin_view.setOnItemSelectedListener { item ->
-            var fragment: Fragment
+            val fragment: Fragment
             when (item.itemId) {
                 R.id.BookingPlan -> {
-                    toolbar?.setTitle("BookingPlan")
+                    toolbar?.title = "BookingPlan"
                     fragment = BookingPlan()
                     loadFragment(fragment)
                     true
                 }
                 R.id.Profile -> {
-                    toolbar?.setTitle("Profile")
+                    toolbar?.title = "Profile"
                     fragment = UserProfile()
                     loadFragment(fragment)
                     true
 
                 }
                 R.id.Favorites -> {
-                    toolbar?.setTitle("Favorites")
+                    toolbar?.title = "Favorites"
                     fragment = Favorites()
                     loadFragment(fragment)
                     true
@@ -83,6 +90,29 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.navFragmentContainer, fragment)
             .commit()
     }
+//    fun onNavigationItemSelected(item: MenuItem): Boolean {
+//        when (item.itemId) {
+//            R.id.BookingPlan -> Navigation.findNavController(this, R.id.navFragmentContainer)
+//                .navigate(
+//                    R.id.BookingPlan
+//                )
+//
+//            R.id.Profile -> Navigation.findNavController(this, R.id.navFragmentContainer)
+//                .navigate(
+//                    R.id.Profile
+//                )
+//
+//            R.id.Favorites -> Navigation.findNavController(
+//                this,
+//                R.id.navFragmentContainer
+//            ).navigate(R.id.Favorites)
+//
+//
+//        }
+//
+//
+//        return true
+//    }
 }
 
 
