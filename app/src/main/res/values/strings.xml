@@ -12,6 +12,7 @@
     <string name="firstname">Firstname</string>
     <string name="lastname">Lastname</string>
     <string name="department">Department</string>
+    <string name="office_image">Office Image</string>
 </resources>
 
 

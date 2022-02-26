@@ -1,4 +1,4 @@
-package com.example.deskbookingappllication.model.api
+package com.example.deskbookingappllication.api
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -29,6 +29,9 @@ object RetrofitInstance {
     }
     val userApi:UserApi by lazy {
         retrofit.create(UserApi::class.java)
+    }
+    val officeApi:OfficeApi by lazy {
+        retrofit.create(OfficeApi::class.java)
     }
 
 }

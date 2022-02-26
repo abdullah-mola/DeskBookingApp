@@ -90,6 +90,7 @@ dependencies {
     testImplementation("com.squareup.okhttp3:mockwebserver:4.9.3")
 
     apply plugin: 'kotlin-android-extensions'
+    implementation "org.jetbrains.kotlin:kotlin-script-runtime:1.6.10"
     //material design
 
 

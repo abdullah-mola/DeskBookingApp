@@ -7,11 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import com.example.deskbookingappllication.databinding.FragmentLoginBinding
 import com.example.deskbookingappllication.model.UserViewModel
-import com.example.deskbookingappllication.model.api.LoginRequestBody
+import com.example.deskbookingappllication.api.LoginRequestBody
 
 class Login : Fragment() {
     private var _binding: FragmentLoginBinding? = null
@@ -34,7 +33,7 @@ class Login : Fragment() {
             userModel.statusCode.observe(viewLifecycleOwner) {
                 when (it) {
                     200 -> {
-                        Navigation.findNavController(binding.root)
+                        NavHostFragment.findNavController(this)
                             .navigate(LoginDirections.actionLoginToBookingPlan())
                         Toast.makeText(context, "Logged in Successfully", Toast.LENGTH_LONG).show()
                     }
