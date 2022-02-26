@@ -1,68 +1,66 @@
 package com.example.deskbookingappllication.ui
 
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
 import android.view.View
-import androidx.drawerlayout.widget.DrawerLayout
-
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import com.example.deskbookingappllication.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationView
-
-
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.deskbookingappllication.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var _binding:ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private val binding get() = _binding
 
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = _binding.root
+        setContentView(view)
         //NavController
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navFragmentContainer) as NavHostFragment
         navController = navHostFragment.navController
-        appBarConfiguration = AppBarConfiguration(navController.graph )
+        appBarConfiguration = AppBarConfiguration(navController.graph)
 
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigatin_view)
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            bottomNavigationView.visibility = if (destination.id == R.id.login ||destination.id == R.id.register) {
-                View.GONE
-            } else {
-                View.VISIBLE
-            }
+            binding.bottomNavigatinView.visibility =
+                if (destination.id == R.id.login || destination.id == R.id.register) {
+                    View.GONE
+                } else {
+                    View.VISIBLE
+                }
         }
 //
 //    }
-        val toolbar = getSupportActionBar();
+        val toolbar = supportActionBar
 
         loadFragment(BookingPlan.newInstance())
 
-        bottom_navigatin_view.setOnItemSelectedListener { item ->
-            var fragment: Fragment
+        binding.bottomNavigatinView.setOnItemSelectedListener { item ->
+            val fragment: Fragment
             when (item.itemId) {
                 R.id.BookingPlan -> {
-                    toolbar?.setTitle("BookingPlan")
+                    toolbar?.title = "BookingPlan"
                     fragment = BookingPlan()
                     loadFragment(fragment)
                     true
                 }
                 R.id.Profile -> {
-                    toolbar?.setTitle("Profile")
+                    toolbar?.title = "Profile"
                     fragment = UserProfile()
                     loadFragment(fragment)
                     true
 
                 }
                 R.id.Favorites -> {
-                    toolbar?.setTitle("Favorites")
+                    toolbar?.title = "Favorites"
                     fragment = Favorites()
                     loadFragment(fragment)
                     true
