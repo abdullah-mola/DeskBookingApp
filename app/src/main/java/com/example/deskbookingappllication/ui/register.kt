@@ -27,7 +27,7 @@ class Register : Fragment() {
             val email = binding.etLoginEmail.text.toString()
             val department = binding.etDepartment.text.toString()
             val password = binding.etLoginPassword.text.toString()
-            val user = User(email, password, firstName, lastName, department)
+            val user= User(email, password, firstName, lastName, department)
             userViewModel.register(user)
 
         }
