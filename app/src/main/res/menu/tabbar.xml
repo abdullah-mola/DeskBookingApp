@@ -4,14 +4,16 @@
     <item
         android:id="@+id/BookingPlan"
         android:icon="@drawable/bookingplan"
-        android:title="BookingPlan"
+        android:title="@string/bookingplan"
         android:enabled="true"/>
     <item
         android:id="@+id/Profile"
         android:icon="@drawable/profile"
-        android:title="Profile" />
+        android:title="@string/profile"
+        android:enabled="true"/>
     <item
         android:id="@+id/Favorites"
-        android:icon="@drawable/ic_baseline_heart_broken_24"
-        android:title="Favorites" />
+        android:icon="@drawable/favorite"
+        android:title="Favorites"
+        android:enabled="true"/>
 </menu>

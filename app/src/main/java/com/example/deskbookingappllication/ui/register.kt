@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModel
 import com.example.deskbookingappllication.databinding.FragmentRegisterBinding
 import com.example.deskbookingappllication.model.User
 import com.example.deskbookingappllication.model.viewModels.UserViewModel
+
 
 class Register : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
