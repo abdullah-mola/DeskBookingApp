@@ -13,12 +13,12 @@ import com.example.deskbookingappllication.model.viewModels.UserViewModel
 class Register : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
-    private val userViewModel: UserViewModel by activityViewModels()
+    val userViewModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View{
+    ): View? {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
 
         binding.btnRegister.setOnClickListener {
@@ -27,7 +27,7 @@ class Register : Fragment() {
             val email = binding.etLoginEmail.text.toString()
             val department = binding.etDepartment.text.toString()
             val password = binding.etLoginPassword.text.toString()
-            val user= User(email, password, firstName, lastName, department)
+            val user: User = User(email, password, firstName, lastName, department)
             userViewModel.register(user)
 
         }

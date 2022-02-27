@@ -4,9 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout.HORIZONTAL
+import android.widget.GridLayout.VERTICAL
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.deskbookingappllication.api.LoginResponse
 import com.example.deskbookingappllication.api.RetrofitInstance
@@ -38,8 +42,8 @@ class BookingPlan : Fragment() {
 
         setUpRecyclerView()
         officeViewModel.offices.observe(viewLifecycleOwner){
-            officeAdapter.officeList = it
-            officeAdapter.notifyDataSetChanged()
+            officeAdapter.swapData(it)
+
         }
 
         officeViewModel.loadoffices()
@@ -51,7 +55,9 @@ class BookingPlan : Fragment() {
     }
     private fun setUpRecyclerView() = binding.rvOffice.apply {
         adapter = officeAdapter
-        layoutManager = GridLayoutManager(context,2, RecyclerView.HORIZONTAL,false)
+
+
+        layoutManager = GridLayoutManager(context,2)
     }
 
 }

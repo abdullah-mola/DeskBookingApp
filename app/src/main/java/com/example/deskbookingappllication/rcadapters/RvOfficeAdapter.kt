@@ -8,7 +8,7 @@ import com.example.deskbookingappllication.databinding.BookingPlanCvBinding
 import com.example.deskbookingappllication.model.Office
 
 class RvOfficeAdapter : RecyclerView.Adapter<RvViewHolder>() {
-    var officeList: List<Office> = ArrayList()
+    var officeList: List<Office> = listOf()
     private lateinit var click: (office: Office) -> Unit
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RvViewHolder {
         val binding =
@@ -39,11 +39,4 @@ class RvOfficeAdapter : RecyclerView.Adapter<RvViewHolder>() {
     }
 }
 
-class RvViewHolder(val binding: BookingPlanCvBinding) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: Office) = with(itemView) {
-        // TODO: Bind the data with View
-        setOnClickListener {
-            // TODO: Handle on click
-        }
-    }
-}
+class RvViewHolder(val binding: BookingPlanCvBinding) : RecyclerView.ViewHolder(binding.root)

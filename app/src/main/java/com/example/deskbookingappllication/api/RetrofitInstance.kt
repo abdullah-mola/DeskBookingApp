@@ -10,7 +10,7 @@ private const val BASE_URL = "https://deskbooking.dev.webundsoehne.com/api/"
 object RetrofitInstance {
 
     var authToken: String? = null
-    var email: String = ""
+
 
 
     private val okHttpClient: OkHttpClient = OkHttpClient.Builder()

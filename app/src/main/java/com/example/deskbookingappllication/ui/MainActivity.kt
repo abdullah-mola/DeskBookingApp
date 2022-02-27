@@ -13,7 +13,7 @@ import com.example.deskbookingappllication.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var _binding:ActivityMainBinding
+    private lateinit var _binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val binding get() = _binding
 
@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+
 
 
     }
