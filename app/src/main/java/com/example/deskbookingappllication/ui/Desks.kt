@@ -45,4 +45,10 @@ class Desks : Fragment() {
         layoutManager = GridLayoutManager(context, 2)
     }
 
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

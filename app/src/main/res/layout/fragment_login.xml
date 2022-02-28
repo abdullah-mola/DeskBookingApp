@@ -66,7 +66,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btn_Login"
+        android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,10 +76,10 @@
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         />
     <Button
-        android:id="@+id/btn_Register"
+        android:id="@+id/btn_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/btn_Login"
+        app:layout_constraintEnd_toStartOf="@+id/btn_login"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="16dp"
         android:text="@string/register"

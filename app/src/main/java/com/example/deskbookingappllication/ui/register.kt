@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModel
 import com.example.deskbookingappllication.databinding.FragmentRegisterBinding
 import com.example.deskbookingappllication.model.User
 import com.example.deskbookingappllication.model.viewModels.UserViewModel
@@ -23,7 +22,7 @@ class Register : Fragment() {
     ): View? {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
 
-        binding.btnRegister.setOnClickListener {
+        binding.btnSignup.setOnClickListener {
             val firstName = binding.txtInputEditTextFirstname.text.toString()
             val lastName = binding.txtInputEditTextLastname.text.toString()
             val email = binding.etLoginEmail.text.toString()
@@ -34,5 +33,11 @@ class Register : Fragment() {
 
         }
         return binding.root
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

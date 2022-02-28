@@ -49,4 +49,9 @@ class BookingPlan : Fragment() {
         layoutManager = LinearLayoutManager(context)
     }
 
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

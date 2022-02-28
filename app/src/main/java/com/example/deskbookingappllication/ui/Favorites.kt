@@ -35,8 +35,8 @@ class Favorites : Fragment() {
         }
 
 
-        deskViewModel.loadDesks()
-
+        deskViewModel.loadFavouriteDesks()
+        //deskViewModel.loadDesks()
 
     }
 
@@ -45,4 +45,11 @@ class Favorites : Fragment() {
         layoutManager = GridLayoutManager(context, 2)
     }
 
+
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
