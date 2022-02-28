@@ -4,10 +4,14 @@ package com.example.deskbookingappllication.ui
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.deskbookingappllication.R
 import com.example.deskbookingappllication.databinding.ActivityMainBinding
 
@@ -20,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val toolbar = supportActionBar
         _binding = ActivityMainBinding.inflate(layoutInflater)
         val view = _binding.root
         setContentView(view)
@@ -27,7 +32,12 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navFragmentContainer) as NavHostFragment
         navController = navHostFragment.navController
+
+
         appBarConfiguration = AppBarConfiguration(navController.graph)
+        binding.bottomNavigatinView.setupWithNavController(navController)
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             binding.bottomNavigatinView.visibility =
@@ -38,50 +48,42 @@ class MainActivity : AppCompatActivity() {
                 }
         }
 //
-//    }
-        val toolbar = supportActionBar
+        binding.bottomNavigatinView.setOnNavigationItemSelectedListener {
 
-        loadFragment(BookingPlan.newInstance())
-
-        binding.bottomNavigatinView.setOnItemSelectedListener { item ->
-            val fragment: Fragment
-            when (item.itemId) {
+            when (it.itemId) {
                 R.id.BookingPlan -> {
                     toolbar?.title = "BookingPlan"
-                    fragment = BookingPlan()
-                    loadFragment(fragment)
+                    Navigation.findNavController(binding.navFragmentContainer)
+                        .navigate(R.id.bookingPlan)
                     true
                 }
                 R.id.Profile -> {
                     toolbar?.title = "Profile"
-                    fragment = UserProfile()
-                    loadFragment(fragment)
+                    Navigation.findNavController(binding.navFragmentContainer)
+                        .navigate(R.id.userProfile)
                     true
-
                 }
                 R.id.Favorites -> {
                     toolbar?.title = "Favorites"
-                    fragment = Favorites()
-                    loadFragment(fragment)
+                    Navigation.findNavController(binding.navFragmentContainer)
+                        .navigate(R.id.favorites)
                     true
-
                 }
-
                 else -> false
             }
 
         }
 
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+
+        val navController = findNavController(R.id.navFragmentContainer)
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
 
     }
 
-    private fun loadFragment(fragment: Fragment) {
-        // load fragment
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.navFragmentContainer, fragment)
-            .commit()
-    }
 }
 
 
