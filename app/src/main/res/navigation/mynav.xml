@@ -49,9 +49,9 @@
     </fragment>
     <fragment
         android:id="@+id/reservation"
-        android:name="com.example.deskbookingappllication.ui.Reservation"
+        android:name="com.example.deskbookingappllication.ui.Desks"
         android:label="fragment_reseveration"
-        tools:layout="@layout/fragment_reseveration" >
+        tools:layout="@layout/fragment_desks" >
         <action
             android:id="@+id/action_reservation_to_bookingPlan"
             app:destination="@id/bookingPlan" />

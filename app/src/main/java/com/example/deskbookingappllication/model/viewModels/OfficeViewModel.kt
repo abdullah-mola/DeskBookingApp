@@ -14,14 +14,14 @@ import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.io.IOException
 
-class OfficeViewModel (application: Application) : AndroidViewModel(
+class OfficeViewModel(application: Application) : AndroidViewModel(
     application
 ) {
-    val TAG = "OfficeViewModel"
+    private val TAG = "OfficeViewModel"
     private var officeList = MutableLiveData<List<Office>>()
-    val offices : LiveData<List<Office>> get() = officeList
+    val offices: LiveData<List<Office>> get() = officeList
 
-    fun loadoffices(){
+    fun loadOffices() {
         viewModelScope.launch {
             val response = try {
                 RetrofitInstance.officeApi.getOfficeList()

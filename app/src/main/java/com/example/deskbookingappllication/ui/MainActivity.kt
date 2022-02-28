@@ -28,7 +28,10 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         val view = _binding.root
         setContentView(view)
-        //NavController
+
+
+
+        //Navigation {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navFragmentContainer) as NavHostFragment
         navController = navHostFragment.navController
@@ -47,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                     View.VISIBLE
                 }
         }
-//
+
         binding.bottomNavigatinView.setOnNavigationItemSelectedListener {
 
             when (it.itemId) {
@@ -73,6 +76,9 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+        //End Navigation }
+
+
 
 
     }
@@ -83,6 +89,10 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
 
     }
+
+
+
+
 
 }
 

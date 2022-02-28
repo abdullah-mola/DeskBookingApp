@@ -1,5 +1,8 @@
 package com.example.deskbookingappllication.api
 
+import com.example.deskbookingappllication.api.api_interfaces.DeskApi
+import com.example.deskbookingappllication.api.api_interfaces.OfficeApi
+import com.example.deskbookingappllication.api.api_interfaces.UserApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -35,13 +38,13 @@ object RetrofitInstance {
             .build()
     }
 
-    val deskApi:DeskApi by lazy {
+    val deskApi: DeskApi by lazy {
         retrofit.create(DeskApi::class.java)
     }
-    val userApi:UserApi by lazy {
+    val userApi: UserApi by lazy {
         retrofit.create(UserApi::class.java)
     }
-    val officeApi:OfficeApi by lazy {
+    val officeApi: OfficeApi by lazy {
         retrofit.create(OfficeApi::class.java)
     }
 

@@ -9,8 +9,7 @@
         android:id="@+id/rvOffice"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="205dp"
-        tools:layout_editor_absoluteY="171dp" />
+         />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

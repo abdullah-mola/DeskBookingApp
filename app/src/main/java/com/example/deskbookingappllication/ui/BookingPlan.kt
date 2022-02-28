@@ -6,15 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.deskbookingappllication.databinding.FragmentBookingPlanBinding
 import com.example.deskbookingappllication.model.viewModels.OfficeViewModel
-import com.example.deskbookingappllication.model.viewModels.UserViewModel
 import com.example.deskbookingappllication.rcadapters.RvOfficeAdapter
 
 class BookingPlan : Fragment() {
     private val officeViewModel: OfficeViewModel by activityViewModels()
-    private val userViewModel: UserViewModel by activityViewModels()
     private var _binding: FragmentBookingPlanBinding? = null
     private val binding get() = _binding!!
     private val officeAdapter: RvOfficeAdapter = RvOfficeAdapter()
@@ -23,7 +21,7 @@ class BookingPlan : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentBookingPlanBinding.inflate(inflater, container, false)
 
         return binding.root
@@ -39,20 +37,16 @@ class BookingPlan : Fragment() {
             officeAdapter.swapData(it)
 
         }
-
-        officeViewModel.loadoffices()
-    }
-
-    companion object {
-        fun newInstance() = BookingPlan()
+        officeViewModel.loadOffices()
 
     }
+
 
     private fun setUpRecyclerView() = binding.rvOffice.apply {
         adapter = officeAdapter
 
 
-        layoutManager = GridLayoutManager(context,2)
+        layoutManager = LinearLayoutManager(context)
     }
 
 }

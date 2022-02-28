@@ -1,4 +1,4 @@
-package com.example.deskbookingappllication.api
+package com.example.deskbookingappllication.api.api_interfaces
 
 import android.media.session.MediaSession
 import com.example.deskbookingappllication.model.Office
