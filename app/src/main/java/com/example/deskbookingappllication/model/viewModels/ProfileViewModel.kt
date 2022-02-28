@@ -21,10 +21,10 @@ class ProfileViewModel(application: Application) : AndroidViewModel(
     private var _user = MutableLiveData<User>()
     val user: LiveData<User> get() = _user
 
-    fun loadUser(userId: String) {
+    fun loadUser(id: String) {
         viewModelScope.launch {
             val response = try {
-                RetrofitInstance.userApi.getUserById(userId)
+                RetrofitInstance.userApi.getUserById(id)
 
             } catch (e: IOException) {
                 Log.e(TAG, "IOException, you might not have internet connection")

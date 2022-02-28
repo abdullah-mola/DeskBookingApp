@@ -12,4 +12,8 @@ interface DeskApi {
     @GET("favourite")
     suspend fun getListOfFavouriteDesks():Response<List<Desk>>
 
+
+
+
+
 }

@@ -35,8 +35,8 @@ class Favorites : Fragment() {
         }
 
 
-        deskViewModel.loadFavouriteDesks()
-        //deskViewModel.loadDesks()
+        //deskViewModel.loadFavouriteDesks()
+        deskViewModel.loadDesks()
 
     }
 
