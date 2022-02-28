@@ -26,7 +26,7 @@ class Login : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         userModel.userLoginData.observe(viewLifecycleOwner){
-            var token = it.token
+            val token = it.token
             RetrofitInstance.authToken = token
 
         }
@@ -56,7 +56,8 @@ class Login : Fragment() {
 
         }
         binding.btnRegister.setOnClickListener {
-            
+            NavHostFragment.findNavController(this)
+                .navigate(LoginDirections.actionLoginToRegister())
         }
         return binding.root
     }
