@@ -27,11 +27,11 @@ class Register : Fragment() {
 
 
         binding.btnSignup.setOnClickListener {
-            val firstName = binding.txtInputEditTextFirstname.text.toString()
-            val lastName = binding.txtInputEditTextLastname.text.toString()
-            val email = binding.etLoginEmail.text.toString()
-            val department = binding.etDepartment.text.toString()
-            val password = binding.etLoginPassword.text.toString()
+            val firstName = binding.txtInputEditTextFirstname.getText().toString().trim()
+            val lastName = binding.txtInputEditTextLastname.getText().toString().trim()
+            val email = binding.etLoginEmail.getText().toString().trim()
+            val department = binding.etDepartment.getText().toString().trim()
+            val password = binding.etLoginPassword.getText().toString().trim()
             user = User(email, password, firstName, lastName, department)
             userViewModel.register(user)
 
