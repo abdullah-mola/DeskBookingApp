@@ -56,8 +56,7 @@ class Login : Fragment() {
 
         }
         binding.btnRegister.setOnClickListener {
-            NavHostFragment.findNavController(this)
-                .navigate(LoginDirections.actionLoginToRegister())
+            
         }
         return binding.root
     }

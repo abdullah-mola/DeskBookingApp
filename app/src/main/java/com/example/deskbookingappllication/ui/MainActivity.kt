@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             binding.bottomNavigatinView.visibility =
-                if (destination.id == R.id.login || destination.id == R.id.register) {
+                if (destination.id == R.id.login ) {
                     View.GONE
                 } else {
                     View.VISIBLE
