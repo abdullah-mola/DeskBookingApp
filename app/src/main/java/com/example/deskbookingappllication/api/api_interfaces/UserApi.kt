@@ -5,7 +5,9 @@ import com.example.deskbookingappllication.api.LoginResponse
 import com.example.deskbookingappllication.model.User
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface UserApi {
 
@@ -14,5 +16,8 @@ interface UserApi {
 
     @POST("login")
     suspend fun userLogin(@Body request: LoginRequestBody): Response<LoginResponse>
+
+    @GET("user")
+    suspend fun getUserById(@Query("userId") userId:String):Response<User>
 
 }

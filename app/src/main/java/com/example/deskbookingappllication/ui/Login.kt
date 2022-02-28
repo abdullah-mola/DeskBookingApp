@@ -27,7 +27,9 @@ class Login : Fragment() {
     ): View {
         userModel.userLoginData.observe(viewLifecycleOwner){
             val token = it.token
+            val userId = it.userId
             RetrofitInstance.authToken = token
+            RetrofitInstance.userId = userId
 
         }
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
