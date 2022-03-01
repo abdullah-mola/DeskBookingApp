@@ -6,15 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.deskbookingappllication.databinding.FragmentBookingPlanBinding
+import com.example.deskbookingappllication.databinding.FragmentOfficesBinding
 import com.example.deskbookingappllication.model.viewModels.OfficeViewModel
 import com.example.deskbookingappllication.rcadapters.RvOfficeAdapter
+import com.google.gson.Gson
 
-class BookingPlan : Fragment() {
+class Offices : Fragment() {
     private val officeViewModel: OfficeViewModel by activityViewModels()
-    private var _binding: FragmentBookingPlanBinding? = null
+    private var _binding: FragmentOfficesBinding? = null
     private val binding get() = _binding!!
+
+
     private val officeAdapter: RvOfficeAdapter = RvOfficeAdapter()
 
 
@@ -22,7 +26,7 @@ class BookingPlan : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentBookingPlanBinding.inflate(inflater, container, false)
+        _binding = FragmentOfficesBinding.inflate(inflater, container, false)
 
         return binding.root
     }
@@ -33,11 +37,20 @@ class BookingPlan : Fragment() {
 
 
         setUpRecyclerView()
-        officeViewModel.offices.observe(viewLifecycleOwner) {
-            officeAdapter.swapData(it)
 
+        officeViewModel.officeList.observe(viewLifecycleOwner) {
+            officeAdapter.swapData(it)
         }
         officeViewModel.loadOffices()
+        officeAdapter.click{
+            Navigation.findNavController(binding.root).navigate(OfficesDirections.actionBookingPlanToDesks(
+                Gson().toJson(it)))
+        }
+
+
+
+
+
 
     }
 

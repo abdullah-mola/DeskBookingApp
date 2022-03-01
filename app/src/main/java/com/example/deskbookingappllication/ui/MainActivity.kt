@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.BookingPlan -> {
                     toolbar?.title = "BookingPlan"
                     Navigation.findNavController(binding.navFragmentContainer)
-                        .navigate(R.id.bookingPlan)
+                        .navigate(R.id.offices)
                     true
                 }
                 R.id.Profile -> {

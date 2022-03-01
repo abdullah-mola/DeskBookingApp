@@ -6,13 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.deskbookingappllication.databinding.FragmentDesksBinding
+import com.example.deskbookingappllication.model.Office
 import com.example.deskbookingappllication.model.viewModels.DeskViewModel
 import com.example.deskbookingappllication.rcadapters.RvDeskAdapter
+import com.google.gson.Gson
 
 class Desks : Fragment() {
     private val deskViewModel: DeskViewModel by activityViewModels()
+    private val args:DesksArgs by navArgs<DesksArgs>()
     private val deskAdapter: RvDeskAdapter = RvDeskAdapter()
     private var _binding: FragmentDesksBinding? = null
     private val binding get() = _binding!!
@@ -28,6 +32,8 @@ class Desks : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val idString = args.id
+        val officeIdString = Gson().fromJson(idString,Office::class.java)
 
         setUpRecyclerView()
         deskViewModel.desks.observe(viewLifecycleOwner) {
@@ -35,7 +41,7 @@ class Desks : Fragment() {
         }
 
 
-        deskViewModel.loadDesks()
+        deskViewModel.loadDesksByOfficeid(officeIdString.office_id)
 
 
     }

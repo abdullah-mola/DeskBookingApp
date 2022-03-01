@@ -43,7 +43,7 @@ class Login : Fragment() {
                 when (it) {
                     200 -> {
                         NavHostFragment.findNavController(this)
-                            .navigate(R.id.bookingPlan)
+                            .navigate(R.id.offices)
                         Toast.makeText(context, "Logged in Successfully", Toast.LENGTH_LONG).show()
                     }
                     401 -> {

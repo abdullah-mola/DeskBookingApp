@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.deskbookingappllication.databinding.BookingPlanCvBinding
+import com.example.deskbookingappllication.databinding.OfficesCvBinding
 import com.example.deskbookingappllication.model.Office
 
 class RvOfficeAdapter : RecyclerView.Adapter<RvViewHolder>() {
@@ -12,7 +12,7 @@ class RvOfficeAdapter : RecyclerView.Adapter<RvViewHolder>() {
     private lateinit var click: (office: Office) -> Unit
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RvViewHolder {
         val binding =
-            BookingPlanCvBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            OfficesCvBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RvViewHolder(binding)
     }
 
@@ -23,7 +23,7 @@ class RvOfficeAdapter : RecyclerView.Adapter<RvViewHolder>() {
             Glide.with(holder.binding.root).load(currentItem.map).into(cvIvOffice)
         }
         holder.binding.root.setOnClickListener {
-            click { officeList[position] }
+            click(officeList[position])
         }
     }
 
@@ -39,4 +39,4 @@ class RvOfficeAdapter : RecyclerView.Adapter<RvViewHolder>() {
     }
 }
 
-class RvViewHolder(val binding: BookingPlanCvBinding) : RecyclerView.ViewHolder(binding.root)
+class RvViewHolder(val binding: OfficesCvBinding) : RecyclerView.ViewHolder(binding.root)

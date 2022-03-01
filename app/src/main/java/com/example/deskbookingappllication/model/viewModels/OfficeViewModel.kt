@@ -2,6 +2,7 @@ package com.example.deskbookingappllication.model.viewModels
 
 import android.app.Application
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,8 +19,10 @@ class OfficeViewModel(application: Application) : AndroidViewModel(
     application
 ) {
     private val TAG = "OfficeViewModel"
-    private var officeList = MutableLiveData<List<Office>>()
-    val offices: LiveData<List<Office>> get() = officeList
+//    private var _office = MutableLiveData<String>()
+//    val office :LiveData<String> get() = _office
+    private var _officeList = MutableLiveData<List<Office>>()
+    val officeList: LiveData<List<Office>> get() = _officeList
 
     fun loadOffices() {
         viewModelScope.launch {
@@ -35,7 +38,8 @@ class OfficeViewModel(application: Application) : AndroidViewModel(
             }
             if (response?.body() != null && response.isSuccessful) {
                 withContext(Dispatchers.Main) {
-                    officeList.value = response.body()!!
+                    _officeList.value = response.body()!!
+
                 }
 
 

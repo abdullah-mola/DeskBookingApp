@@ -67,4 +67,27 @@ class DeskViewModel (application: Application) : AndroidViewModel(
             }
         }
     }
+    fun loadDesksByOfficeid(id:String){
+        viewModelScope.launch {
+            val response = try {
+                RetrofitInstance.deskApi.getListOfDesksById(id)
+
+            } catch (e: IOException) {
+                Log.e(TAG, "IOException, you might not have internet connection")
+                null
+            } catch (e: HttpException) {
+                Log.e(TAG, "HttpException, unexpected response")
+                null
+            }
+            if (response?.body() != null && response.isSuccessful) {
+                withContext(Dispatchers.Main) {
+                    deskList.value = response.body()!!
+                }
+
+
+            } else {
+                Log.e(TAG, "Response not successful")
+            }
+        }
+    }
 }

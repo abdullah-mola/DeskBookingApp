@@ -30,13 +30,14 @@ class Favorites : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setUpRecyclerView()
+
         deskViewModel.desks.observe(viewLifecycleOwner) {
             deskAdapter.swapData(it)
         }
 
 
-        //deskViewModel.loadFavouriteDesks()
-        deskViewModel.loadDesks()
+        deskViewModel.loadFavouriteDesks()
+        //deskViewModel.loadDesks()
 
     }
 

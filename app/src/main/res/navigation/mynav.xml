@@ -6,19 +6,15 @@
     app:startDestination="@id/login">
 
     <fragment
-        android:id="@+id/bookingPlan"
-        android:name="com.example.deskbookingappllication.ui.BookingPlan"
+        android:id="@+id/offices"
+        android:name="com.example.deskbookingappllication.ui.Offices"
         android:label="fragment_booking_plan"
-        tools:layout="@layout/fragment_booking_plan" >
+        tools:layout="@layout/fragment_offices" >
         <action
-            android:id="@+id/action_bookingPlan_to_favorites"
-            app:destination="@id/favorites" />
-        <action
-            android:id="@+id/action_bookingPlan_to_reservation"
-            app:destination="@id/reservation" />
-        <action
-            android:id="@+id/action_bookingPlan_to_userProfile"
-            app:destination="@id/userProfile" />
+            android:id="@+id/action_bookingPlan_to_desks"
+            app:destination="@id/desks" />
+
+
     </fragment>
     <fragment
         android:id="@+id/login"
@@ -27,7 +23,7 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_login_to_bookingPlan"
-            app:destination="@id/bookingPlan" />
+            app:destination="@id/offices" />
         <action
             android:id="@+id/action_login_to_register"
             app:destination="@id/register" />
@@ -40,28 +36,32 @@
         tools:layout="@layout/fragment_usesr_profile" >
         <action
             android:id="@+id/action_userProfile_to_reservation"
-            app:destination="@id/reservation" />
+            app:destination="@id/desks" />
         <action
             android:id="@+id/action_userProfile_to_favorites"
             app:destination="@id/favorites" />
         <action
             android:id="@+id/action_userProfile_to_bookingPlan"
-            app:destination="@id/bookingPlan" />
+            app:destination="@id/offices" />
     </fragment>
     <fragment
-        android:id="@+id/reservation"
+        android:id="@+id/desks"
         android:name="com.example.deskbookingappllication.ui.Desks"
         android:label="fragment_reseveration"
         tools:layout="@layout/fragment_desks" >
         <action
             android:id="@+id/action_reservation_to_bookingPlan"
-            app:destination="@id/bookingPlan" />
+            app:destination="@id/offices" />
         <action
             android:id="@+id/action_reservation_to_favorites"
             app:destination="@id/favorites" />
         <action
             android:id="@+id/action_reservation_to_userProfile"
             app:destination="@id/userProfile" />
+        <argument
+            android:name="id"
+            app:argType="string"
+            />
     </fragment>
     <fragment
         android:id="@+id/favorites"
@@ -70,7 +70,7 @@
         tools:layout="@layout/fragment_favoriet" >
         <action
             android:id="@+id/action_favorites_to_reservation"
-            app:destination="@id/reservation" />
+            app:destination="@id/desks" />
         <action
             android:id="@+id/action_favorites_to_userProfile"
             app:destination="@id/userProfile" />
