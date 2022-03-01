@@ -25,14 +25,12 @@ class Register : Fragment() {
     ): View {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
 
-
-
         binding.btnSignup.setOnClickListener {
-            val firstName = binding.txtInputEditTextFirstname.getText().toString().trim()
-            val lastName = binding.txtInputEditTextLastname.getText().toString().trim()
-            val email = binding.etLoginEmail.getText().toString().trim()
-            val department = binding.etDepartment.getText().toString().trim()
-            val password = binding.etLoginPassword.getText().toString().trim()
+            val firstName = binding.txtInputEditTextFirstname.text.toString().trim()
+            val lastName = binding.txtInputEditTextLastname.text.toString().trim()
+            val email = binding.etLoginEmail.text.toString().trim()
+            val department = binding.etDepartment.text.toString().trim()
+            val password = binding.etLoginPassword.text.toString().trim()
             user = User(email, password, firstName, lastName, department)
             userViewModel.register(user)
 
@@ -44,8 +42,10 @@ class Register : Fragment() {
                         Toast.makeText(context, "Signed up Successfully", Toast.LENGTH_LONG).show()
                     }
                     409 -> {
-                        Toast.makeText(context,
-                                "Email already registered",Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            context,
+                            "Email already registered", Toast.LENGTH_LONG
+                        ).show()
                     }
                     400 -> {
                         Toast.makeText(
@@ -56,7 +56,6 @@ class Register : Fragment() {
                     }
                 }
             }
-
 
         }
         return binding.root
