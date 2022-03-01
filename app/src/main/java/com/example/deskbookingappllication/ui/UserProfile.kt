@@ -7,14 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.NavHostFragment
+import com.example.deskbookingappllication.R
 import com.example.deskbookingappllication.api.RetrofitInstance
-import com.example.deskbookingappllication.databinding.FragmentUsesrProfileBinding
+import com.example.deskbookingappllication.databinding.FragmentUserProfileBinding
 import com.example.deskbookingappllication.model.User
 import com.example.deskbookingappllication.model.viewModels.UserViewModel
 
 
 class UserProfile : Fragment() {
-    private var _binding: FragmentUsesrProfileBinding? = null
+    private var _binding: FragmentUserProfileBinding? = null
     private val binding get() = _binding!!
     private val userViewModel: UserViewModel by activityViewModels()
     private lateinit var user: User
@@ -23,7 +25,7 @@ class UserProfile : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentUsesrProfileBinding.inflate(inflater, container, false)
+        _binding = FragmentUserProfileBinding.inflate(inflater, container, false)
         val userId: String = RetrofitInstance.userId.toString()
         userViewModel.loadUser(userId)
 
@@ -45,6 +47,10 @@ class UserProfile : Fragment() {
             val department = binding.etProfileDepartment.text.toString().trim()
             user = User(email, password, firstName, lastName, department)
             userViewModel.updateUser(user)
+        }
+
+        binding.btnCommentNavigate.setOnClickListener {
+            NavHostFragment.findNavController(this).navigate(R.id.admin)
         }
 
         return binding.root

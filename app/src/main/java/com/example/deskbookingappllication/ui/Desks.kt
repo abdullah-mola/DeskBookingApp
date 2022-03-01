@@ -16,36 +16,29 @@ class Desks : Fragment() {
     private val deskAdapter: RvDeskAdapter = RvDeskAdapter()
     private var _binding: FragmentDesksBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDesksBinding.inflate(inflater, container, false)
 
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setUpRecyclerView()
         deskViewModel.desks.observe(viewLifecycleOwner) {
             deskAdapter.swapData(it)
         }
-
-
         deskViewModel.loadDesks()
-
-
     }
 
     private fun setUpRecyclerView() = binding.rvDesks.apply {
         adapter = deskAdapter
         layoutManager = GridLayoutManager(context, 2)
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -1,5 +1,6 @@
 package com.example.deskbookingappllication.rcadapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -29,10 +30,11 @@ class RvOfficeAdapter : RecyclerView.Adapter<RvViewHolder>() {
 
     override fun getItemCount() = officeList.size
 
-    fun click(callback: (office: Office) -> Unit) {
+    private fun click(callback: (office: Office) -> Unit) {
         this.click = callback
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun swapData(data: List<Office>) {
         this.officeList = data
         notifyDataSetChanged()
