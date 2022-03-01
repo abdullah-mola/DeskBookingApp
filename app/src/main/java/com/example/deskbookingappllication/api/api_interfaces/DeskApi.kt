@@ -10,6 +10,6 @@ interface DeskApi {
     suspend fun getListOfDesks(): Response<List<Desk>>
 
     @GET("favourite")
-    suspend fun getListOfFavouriteDesks():Response<List<Desk>>
+    suspend fun getListOfFavouriteDesks(): Response<List<Desk>>
 
 }

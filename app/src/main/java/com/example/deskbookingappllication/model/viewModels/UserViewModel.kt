@@ -26,7 +26,7 @@ class UserViewModel(application: Application) : AndroidViewModel(
     val registerStatusCode: LiveData<Int> get() = registerResponseCode
     private var _userLogin = MutableLiveData<LoginResponse>()
     private var _user = MutableLiveData<User>()
-    val user :LiveData<User> get() = _user
+    val user: LiveData<User> get() = _user
     val userLoginData: LiveData<LoginResponse> get() = _userLogin
     fun login(user: LoginRequestBody) {
 
