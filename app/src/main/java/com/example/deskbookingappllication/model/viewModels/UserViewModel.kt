@@ -25,8 +25,8 @@ class UserViewModel(application: Application) : AndroidViewModel(
     private var registerResponseCode = MutableLiveData<Int>()
     val registerStatusCode: LiveData<Int> get() = registerResponseCode
     private var _userLogin = MutableLiveData<LoginResponse>()
-    private var _userRegister = MutableLiveData<User>()
-    val userRegister :LiveData<User> get() = _userRegister
+    private var _user = MutableLiveData<User>()
+    val user :LiveData<User> get() = _user
     val userLoginData: LiveData<LoginResponse> get() = _userLogin
     fun login(user: LoginRequestBody) {
 
@@ -59,11 +59,57 @@ class UserViewModel(application: Application) : AndroidViewModel(
 
 
     }
+    fun updateUser(user:User){
 
+        viewModelScope.launch(Dispatchers.IO) {
+            val updateResponse = try {
+                RetrofitInstance.userApi.updateUser(user)
+            } catch (e: IOException) {
+                Log.e(TAG, "IOException, you might not have internet connection")
+                null
+            } catch (e: HttpException) {
+                Log.e(TAG, "HttpException, unexpected response")
+                null
+            }
+            if (updateResponse?.body() != null && updateResponse.isSuccessful) {
+                withContext(Dispatchers.Main) {
+                    Log.d(TAG, "Request was success")
+                    registerResponseCode.value = updateResponse.code()
+                    _user.value = updateResponse.body()
+                }
+            } else {
+                withContext(Dispatchers.Main) {
+                    Log.e(TAG, "Request was not successful")
+                    registerResponseCode.value = updateResponse?.code()
+                }
+            }
+        }
+    }
+    fun loadUser(id: String) {
+        viewModelScope.launch {
+            val response = try {
+                RetrofitInstance.userApi.getUserById(id)
+
+            } catch (e: IOException) {
+                Log.e(TAG, "IOException, you might not have internet connection")
+                null
+            } catch (e: HttpException) {
+                Log.e(TAG, "HttpException, unexpected response")
+                null
+            }
+            if (response?.body() != null && response.isSuccessful) {
+                withContext(Dispatchers.Main) {
+                    _user.value = response.body()!!
+                }
+
+
+            } else {
+                Log.e(TAG, "Response not successful")
+            }
+        }
+    }
 
     fun register(user: User) {
-
-
         viewModelScope.launch(Dispatchers.IO) {
             val registerResponse = try {
                 RetrofitInstance.userApi.userRegister(user)
@@ -78,7 +124,7 @@ class UserViewModel(application: Application) : AndroidViewModel(
                 withContext(Dispatchers.Main) {
                     Log.d(TAG, "Request was success")
                     registerResponseCode.value = registerResponse.code()
-                    _userRegister.value = registerResponse.body()
+                    _user.value = registerResponse.body()
                 }
             } else {
                 withContext(Dispatchers.Main) {

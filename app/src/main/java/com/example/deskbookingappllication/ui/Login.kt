@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.NavHostFragment
+import com.example.deskbookingappllication.R
 import com.example.deskbookingappllication.databinding.FragmentLoginBinding
 import com.example.deskbookingappllication.model.viewModels.UserViewModel
 import com.example.deskbookingappllication.api.LoginRequestBody
@@ -42,7 +43,7 @@ class Login : Fragment() {
                 when (it) {
                     200 -> {
                         NavHostFragment.findNavController(this)
-                            .navigate(LoginDirections.actionLoginToBookingPlan())
+                            .navigate(R.id.bookingPlan)
                         Toast.makeText(context, "Logged in Successfully", Toast.LENGTH_LONG).show()
                     }
                     401 -> {
@@ -59,7 +60,7 @@ class Login : Fragment() {
         }
         binding.btnRegister.setOnClickListener {
             NavHostFragment.findNavController(this)
-                .navigate(LoginDirections.actionLoginToRegister())
+                .navigate(R.id.register)
         }
         return binding.root
     }

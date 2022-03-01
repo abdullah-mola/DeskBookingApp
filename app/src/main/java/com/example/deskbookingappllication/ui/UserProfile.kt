@@ -9,13 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.deskbookingappllication.api.RetrofitInstance
 import com.example.deskbookingappllication.databinding.FragmentUsesrProfileBinding
-import com.example.deskbookingappllication.model.viewModels.ProfileViewModel
+import com.example.deskbookingappllication.model.User
+import com.example.deskbookingappllication.model.viewModels.UserViewModel
 
 
 class UserProfile : Fragment() {
     private var _binding: FragmentUsesrProfileBinding? = null
     private val binding get() = _binding!!
-    private val profileViewModel: ProfileViewModel by activityViewModels()
+    private val userViewModel: UserViewModel by activityViewModels()
+    private lateinit var user: User
 
 
     override fun onCreateView(
@@ -24,10 +26,10 @@ class UserProfile : Fragment() {
     ): View {
         _binding = FragmentUsesrProfileBinding.inflate(inflater, container, false)
         val userId: String = RetrofitInstance.userId.toString()
-        profileViewModel.loadUser(userId)
+        userViewModel.loadUser(userId)
 
-        profileViewModel.user.observe(viewLifecycleOwner) {
-            binding.etProfileEmail.text = Editable.Factory.getInstance().newEditable(it.email)
+        userViewModel.user.observe(viewLifecycleOwner) {
+             binding.etProfileEmail.text = Editable.Factory.getInstance().newEditable(it.email)
             binding.etProfileFirstname.text =
                 Editable.Factory.getInstance().newEditable(it.firstname)
             binding.etProfileLastname.text = Editable.Factory.getInstance().newEditable(it.lastname)
@@ -37,6 +39,18 @@ class UserProfile : Fragment() {
 
 
         }
+
+       binding.btnProfileSave.setOnClickListener {
+           val firstName = binding.etProfileFirstname.getText().toString().trim()
+           val lastName = binding.etProfileLastname.getText().toString().trim()
+           val email = binding.etProfileEmail.getText().toString().trim()
+           val password = binding.etProfilePassword.getText().toString().trim()
+           val department = binding.etProfileDepartment.getText().toString().trim()
+           user = User(email,password,firstName,lastName,department)
+
+           userViewModel.updateUser(user)
+
+       }
 
 
 

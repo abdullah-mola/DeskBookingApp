@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.NavHostFragment
+import com.example.deskbookingappllication.R
 import com.example.deskbookingappllication.databinding.FragmentRegisterBinding
 import com.example.deskbookingappllication.model.User
 import com.example.deskbookingappllication.model.viewModels.UserViewModel
@@ -27,11 +28,11 @@ class Register : Fragment() {
 
 
         binding.btnSignup.setOnClickListener {
-            val firstName = binding.txtInputEditTextFirstname.text.toString()
-            val lastName = binding.txtInputEditTextLastname.text.toString()
-            val email = binding.etLoginEmail.text.toString()
-            val department = binding.etDepartment.text.toString()
-            val password = binding.etLoginPassword.text.toString()
+            val firstName = binding.txtInputEditTextFirstname.getText().toString().trim()
+            val lastName = binding.txtInputEditTextLastname.getText().toString().trim()
+            val email = binding.etLoginEmail.getText().toString().trim()
+            val department = binding.etDepartment.getText().toString().trim()
+            val password = binding.etLoginPassword.getText().toString().trim()
             user = User(email, password, firstName, lastName, department)
             userViewModel.register(user)
 
@@ -39,7 +40,7 @@ class Register : Fragment() {
                 when (it) {
                     204 -> {
                         NavHostFragment.findNavController(this)
-                            .navigate(RegisterDirections.actionRegisterToLogin())
+                            .navigate(R.id.login)
                         Toast.makeText(context, "Signed up Successfully", Toast.LENGTH_LONG).show()
                     }
                     409 -> {
