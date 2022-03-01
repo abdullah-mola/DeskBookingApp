@@ -23,7 +23,7 @@ class UserViewModel(application: Application) : AndroidViewModel(
     private var responseCode = MutableLiveData<Int>()
     val statusCode: LiveData<Int> get() = responseCode
     private var registerResponseCode = MutableLiveData<Int>()
-    val registerstatusCode: LiveData<Int> get() = registerResponseCode
+    val registerStatusCode: LiveData<Int> get() = registerResponseCode
     private var _userLogin = MutableLiveData<LoginResponse>()
     private var _userRegister = MutableLiveData<User>()
     val userRegister :LiveData<User> get() = _userRegister

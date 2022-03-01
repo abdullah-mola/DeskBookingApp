@@ -35,7 +35,7 @@ class Register : Fragment() {
             user = User(email, password, firstName, lastName, department)
             userViewModel.register(user)
 
-            userViewModel.registerstatusCode.observe(viewLifecycleOwner) {
+            userViewModel.registerStatusCode.observe(viewLifecycleOwner) {
                 when (it) {
                     204 -> {
                         NavHostFragment.findNavController(this)
