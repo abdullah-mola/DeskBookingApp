@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.deskbookingappllication.databinding.CvCommentsBinding
 import com.example.deskbookingappllication.model.Comment
 
@@ -26,6 +25,7 @@ class RvCommentAdapter : RecyclerView.Adapter<RvCommentViewHolder>() {
         holder.binding.apply {
             val currentItem = commentList[position]
             tvComment.text = currentItem.comment
+            tvCommentedAt.text = currentItem.commented_at
 
         }
         holder.binding.root.setOnClickListener {
