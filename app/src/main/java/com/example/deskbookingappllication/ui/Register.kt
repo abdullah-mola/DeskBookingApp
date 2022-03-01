@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.NavHostFragment
+import com.example.deskbookingappllication.R
 import com.example.deskbookingappllication.databinding.FragmentRegisterBinding
 import com.example.deskbookingappllication.model.User
 import com.example.deskbookingappllication.model.viewModels.UserViewModel
@@ -39,7 +40,7 @@ class Register : Fragment() {
                 when (it) {
                     204 -> {
                         NavHostFragment.findNavController(this)
-                            .navigate(RegisterDirections.actionRegisterToLogin())
+                            .navigate(R.id.login)
                         Toast.makeText(context, "Signed up Successfully", Toast.LENGTH_LONG).show()
                     }
                     409 -> {
