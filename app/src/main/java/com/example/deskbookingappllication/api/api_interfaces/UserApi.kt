@@ -18,6 +18,6 @@ interface UserApi {
     suspend fun getUserById(@Path("id") id: String): Response<User>
 
     @POST("user")
-    suspend fun updateUser(@Body body:User):Response<User>
+    suspend fun updateUser(@Body body: User): Response<User>
 
 }

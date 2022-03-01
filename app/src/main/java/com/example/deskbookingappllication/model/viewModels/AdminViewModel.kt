@@ -2,33 +2,28 @@ package com.example.deskbookingappllication.model.viewModels
 
 import android.app.Application
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.deskbookingappllication.api.RetrofitInstance
-import com.example.deskbookingappllication.model.Office
+import com.example.deskbookingappllication.model.Comment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.io.IOException
 
-class OfficeViewModel(application: Application) : AndroidViewModel(
-    application
-) {
-    private val TAG = "OfficeViewModel"
-//    private var _office = MutableLiveData<String>()
-//    val office :LiveData<String> get() = _office
-    private var _officeList = MutableLiveData<List<Office>>()
-    val officeList: LiveData<List<Office>> get() = _officeList
+class AdminViewModel(application: Application) : AndroidViewModel(application) {
 
-    fun loadOffices() {
+    private val TAG = "AdminViewModel"
+    private var commentList = MutableLiveData<List<Comment>>()
+    val comment: LiveData<List<Comment>> get() = commentList
+
+    fun loadComments() {
         viewModelScope.launch {
             val response = try {
-                RetrofitInstance.officeApi.getOfficeList()
-
+                RetrofitInstance.deskApi.getListOfComments()
             } catch (e: IOException) {
                 Log.e(TAG, "IOException, you might not have internet connection")
                 null
@@ -38,14 +33,11 @@ class OfficeViewModel(application: Application) : AndroidViewModel(
             }
             if (response?.body() != null && response.isSuccessful) {
                 withContext(Dispatchers.Main) {
-                    _officeList.value = response.body()!!
-
+                    commentList.value = response.body()!!
                 }
             } else {
                 Log.e(TAG, "Response not successful")
             }
         }
     }
-
-
 }

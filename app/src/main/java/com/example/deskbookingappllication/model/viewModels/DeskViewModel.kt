@@ -14,14 +14,14 @@ import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.io.IOException
 
-class DeskViewModel (application: Application) : AndroidViewModel(
+class DeskViewModel(application: Application) : AndroidViewModel(
     application
 ) {
     private val TAG = "DeskViewModel"
     private var deskList = MutableLiveData<List<Desk>>()
-    val desks : LiveData<List<Desk>> get() = deskList
+    val desks: LiveData<List<Desk>> get() = deskList
 
-    fun loadDesks(){
+    fun loadDesks() {
         viewModelScope.launch {
             val response = try {
                 RetrofitInstance.deskApi.getListOfDesks()
@@ -44,7 +44,8 @@ class DeskViewModel (application: Application) : AndroidViewModel(
             }
         }
     }
-    fun loadFavouriteDesks(){
+
+    fun loadFavouriteDesks() {
         viewModelScope.launch {
             val response = try {
                 RetrofitInstance.deskApi.getListOfFavouriteDesks()

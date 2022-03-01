@@ -1,4 +1,5 @@
 package com.example.deskbookingappllication.model
+
 import java.io.Serializable
 
 import com.google.gson.annotations.SerializedName
@@ -10,4 +11,4 @@ data class Office(
     @SerializedName("name")
     val office_name: String,
     val map: String
-):Serializable
+) : Serializable

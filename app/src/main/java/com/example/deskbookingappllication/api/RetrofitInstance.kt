@@ -13,8 +13,7 @@ private const val BASE_URL = "https://deskbooking.dev.webundsoehne.com/api/"
 object RetrofitInstance {
 
     var authToken: String? = null
-    var userId:String? = null
-
+    var userId: String? = null
 
 
     private val okHttpClient: OkHttpClient = OkHttpClient.Builder()
@@ -38,6 +37,7 @@ object RetrofitInstance {
             .addConverterFactory(GsonConverterFactory.create()).client(okHttpClient)
             .build()
     }
+
 
     val deskApi: DeskApi by lazy {
         retrofit.create(DeskApi::class.java)

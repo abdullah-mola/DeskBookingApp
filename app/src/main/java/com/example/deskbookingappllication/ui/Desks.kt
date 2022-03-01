@@ -20,12 +20,12 @@ class Desks : Fragment() {
     private val deskAdapter: RvDeskAdapter = RvDeskAdapter()
     private var _binding: FragmentDesksBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDesksBinding.inflate(inflater, container, false)
-
 
         return binding.root
     }
@@ -50,8 +50,6 @@ class Desks : Fragment() {
         adapter = deskAdapter
         layoutManager = GridLayoutManager(context, 2)
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

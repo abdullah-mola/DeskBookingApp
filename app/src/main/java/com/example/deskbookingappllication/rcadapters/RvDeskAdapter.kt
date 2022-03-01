@@ -1,5 +1,6 @@
 package com.example.deskbookingappllication.rcadapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,11 +9,16 @@ import com.example.deskbookingappllication.databinding.CvDesksBinding
 import com.example.deskbookingappllication.model.Desk
 
 class RvDeskAdapter : RecyclerView.Adapter<RvDeskViewHolder>() {
-    var deskList: List<Desk> = listOf()
+    private var deskList: List<Desk> = listOf()
     private lateinit var click: (desk: Desk) -> Unit
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RvDeskViewHolder {
+
         val binding =
-            CvDesksBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            CvDesksBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent, false
+            )
         return RvDeskViewHolder(binding)
     }
 
@@ -29,10 +35,11 @@ class RvDeskAdapter : RecyclerView.Adapter<RvDeskViewHolder>() {
 
     override fun getItemCount() = deskList.size
 
-    fun click(callback: (desk: Desk) -> Unit) {
+    private fun click(callback: (desk: Desk) -> Unit) {
         this.click = callback
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun swapData(data: List<Desk>) {
         this.deskList = data
         notifyDataSetChanged()

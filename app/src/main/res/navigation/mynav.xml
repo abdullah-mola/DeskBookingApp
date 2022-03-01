@@ -33,7 +33,7 @@
         android:id="@+id/userProfile"
         android:name="com.example.deskbookingappllication.ui.UserProfile"
         android:label="fragment_usesr_profile"
-        tools:layout="@layout/fragment_usesr_profile" >
+        tools:layout="@layout/fragment_user_profile" >
         <action
             android:id="@+id/action_userProfile_to_reservation"
             app:destination="@id/desks" />
@@ -43,6 +43,10 @@
         <action
             android:id="@+id/action_userProfile_to_bookingPlan"
             app:destination="@id/offices" />
+
+        <action
+            android:id="@+id/action_userProfile_to_admin"
+            app:destination="@id/admin" />
     </fragment>
     <fragment
         android:id="@+id/desks"
@@ -84,5 +88,9 @@
             android:id="@+id/action_register_to_login"
             app:destination="@id/login" />
     </fragment>
+    <fragment
+        android:id="@+id/admin"
+        android:name="com.example.deskbookingappllication.ui.Admin"
+        android:label="Admin" />
 
 </navigation>
