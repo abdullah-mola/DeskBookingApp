@@ -74,13 +74,13 @@ class UserViewModel(application: Application) : AndroidViewModel(
             if (updateResponse?.body() != null && updateResponse.isSuccessful) {
                 withContext(Dispatchers.Main) {
                     Log.d(TAG, "Request was success")
-                    registerResponseCode.value = updateResponse.code()
+                    responseCode.value = updateResponse.code()
                     _user.value = updateResponse.body()
                 }
             } else {
                 withContext(Dispatchers.Main) {
                     Log.e(TAG, "Request was not successful")
-                    registerResponseCode.value = updateResponse?.code()
+                    responseCode.value = updateResponse?.code()
                 }
             }
         }

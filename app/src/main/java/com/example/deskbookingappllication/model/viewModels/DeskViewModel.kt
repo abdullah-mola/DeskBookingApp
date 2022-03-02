@@ -71,7 +71,7 @@ class DeskViewModel(application: Application) : AndroidViewModel(
     fun loadDesksByOfficeid(id:String){
         viewModelScope.launch {
             val response = try {
-                RetrofitInstance.deskApi.getListOfDesksById(id)
+                RetrofitInstance.deskApi.getListOfDesksByOfficeId(id)
 
             } catch (e: IOException) {
                 Log.e(TAG, "IOException, you might not have internet connection")

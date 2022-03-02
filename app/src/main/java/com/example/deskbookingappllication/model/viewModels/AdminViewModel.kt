@@ -20,10 +20,10 @@ class AdminViewModel(application: Application) : AndroidViewModel(application) {
     private var commentList = MutableLiveData<List<Comment>>()
     val comment: LiveData<List<Comment>> get() = commentList
 
-    fun loadComments() {
+    fun loadComments(id:String) {
         viewModelScope.launch {
             val response = try {
-                RetrofitInstance.deskApi.getListOfComments()
+                RetrofitInstance.deskApi.getListOfComments(id)
             } catch (e: IOException) {
                 Log.e(TAG, "IOException, you might not have internet connection")
                 null

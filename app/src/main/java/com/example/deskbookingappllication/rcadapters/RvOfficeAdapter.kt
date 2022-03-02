@@ -30,7 +30,7 @@ class RvOfficeAdapter : RecyclerView.Adapter<RvViewHolder>() {
 
     override fun getItemCount() = officeList.size
 
-    private fun click(callback: (office: Office) -> Unit) {
+     fun click(callback: (office: Office) -> Unit) {
         this.click = callback
     }
 

@@ -9,6 +9,7 @@ import com.example.deskbookingappllication.databinding.CvDesksBinding
 import com.example.deskbookingappllication.model.Desk
 
 class RvDeskAdapter : RecyclerView.Adapter<RvDeskViewHolder>() {
+    var currentItem : Desk?=null
     private var deskList: List<Desk> = listOf()
     private lateinit var click: (desk: Desk) -> Unit
 
@@ -23,19 +24,19 @@ class RvDeskAdapter : RecyclerView.Adapter<RvDeskViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RvDeskViewHolder, position: Int) {
+       currentItem = deskList[position]
         holder.binding.apply {
-            val currentItem = deskList[position]
-            cvTvDesk.text = currentItem.label
-            Glide.with(holder.binding.root).load(currentItem.map).into(cvIvDesk)
+            cvTvDesk.text = currentItem!!.label
+            Glide.with(holder.binding.root).load(currentItem!!.map).into(cvIvDesk)
         }
         holder.binding.root.setOnClickListener {
-            click { deskList[position] }
+            click(deskList[position])
         }
     }
 
     override fun getItemCount() = deskList.size
 
-    private fun click(callback: (desk: Desk) -> Unit) {
+    fun click(callback: (desk: Desk) -> Unit) {
         this.click = callback
     }
 

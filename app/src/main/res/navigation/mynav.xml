@@ -22,9 +22,6 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_login_to_bookingPlan"
-            app:destination="@id/offices" />
-        <action
             android:id="@+id/action_login_to_register"
             app:destination="@id/register" />
 
@@ -70,8 +67,8 @@
     <fragment
         android:id="@+id/favorites"
         android:name="com.example.deskbookingappllication.ui.Favorites"
-        android:label="fragment_favoriet"
-        tools:layout="@layout/fragment_favoriet" >
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favourite" >
         <action
             android:id="@+id/action_favorites_to_reservation"
             app:destination="@id/desks" />

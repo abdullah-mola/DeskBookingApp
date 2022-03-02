@@ -4,6 +4,7 @@ import com.example.deskbookingappllication.model.Comment
 import com.example.deskbookingappllication.model.Desk
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface DeskApi {
@@ -15,9 +16,9 @@ interface DeskApi {
     suspend fun getListOfFavouriteDesks(): Response<List<Desk>>
 
     @GET("desk")
-    suspend fun getListOfDesksById(@Query("id") id: String): Response<List<Desk>>
+    suspend fun getListOfDesksByOfficeId(@Query("office") id: String): Response<List<Desk>>
 
-    @GET ("comment")
-    suspend fun getListOfComments(): Response<List<Comment>>
+    @GET ("desk/{deskId}/comment")
+    suspend fun getListOfComments(@Path("deskId")id:String?): Response<List<Comment>>
 
 }

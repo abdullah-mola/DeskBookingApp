@@ -14,6 +14,7 @@ object RetrofitInstance {
 
     var authToken: String? = null
     var userId: String? = null
+    var deskId:String? = null
 
 
     private val okHttpClient: OkHttpClient = OkHttpClient.Builder()

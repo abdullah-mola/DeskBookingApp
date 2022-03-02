@@ -4,6 +4,7 @@ package com.example.deskbookingappllication.ui
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -14,6 +15,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.deskbookingappllication.R
 import com.example.deskbookingappllication.databinding.ActivityMainBinding
+import com.google.android.material.internal.ContextUtils.getActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,22 +32,36 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
 
-
         //Navigation {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navFragmentContainer) as NavHostFragment
         navController = navHostFragment.navController
 
 
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.login,
+                R.id.offices,
+                R.id.userProfile,
+                R.id.favorites,
+                R.id.register,
+                R.id.desks
+            )
+        )
         binding.bottomNavigatinView.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        supportActionBar?.setHomeButtonEnabled(false)
+
+
+
+
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             binding.bottomNavigatinView.visibility =
                 if (destination.id == R.id.login || destination.id == R.id.register) {
                     View.GONE
+
                 } else {
                     View.VISIBLE
                 }
@@ -79,9 +95,9 @@ class MainActivity : AppCompatActivity() {
         //End Navigation }
 
 
-
-
     }
+
+
 
     override fun onSupportNavigateUp(): Boolean {
 
@@ -89,7 +105,6 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
 
     }
-
 
 
 

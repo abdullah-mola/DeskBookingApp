@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs'
+
+
 }
 apply plugin: 'kotlin-kapt'
 
@@ -16,6 +18,7 @@ kapt {
         option("-Xmaxerrs", 700)
     }
 }
+
 
 android {
     buildFeatures {
