@@ -15,7 +15,7 @@ import com.example.deskbookingappllication.model.viewModels.AdminViewModel
 import com.example.deskbookingappllication.rcadapters.RvCommentAdapter
 import com.example.deskbookingappllication.rcadapters.RvDeskAdapter
 
-class Admin : Fragment() {
+class AdminFragment : Fragment() {
     private val adminViewModel: AdminViewModel by activityViewModels()
     private val commentAdapter: RvCommentAdapter = RvCommentAdapter()
     private var _binding: FragmentAdminBinding? = null
@@ -41,6 +41,7 @@ class Admin : Fragment() {
 
         }
         val deskId = deskAdapter.currentItem?.desk_id
+
 
         if (deskId != null) {
             adminViewModel.loadComments(deskId)

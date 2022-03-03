@@ -12,7 +12,7 @@ import com.example.deskbookingappllication.databinding.FragmentFavouriteBinding
 import com.example.deskbookingappllication.model.viewModels.DeskViewModel
 import com.example.deskbookingappllication.rcadapters.RvDeskAdapter
 
-class Favorites : Fragment() {
+class FavoritesFragment : Fragment() {
     private val deskViewModel: DeskViewModel by activityViewModels()
     private val deskAdapter: RvDeskAdapter = RvDeskAdapter()
     private var _binding: FragmentFavouriteBinding? = null

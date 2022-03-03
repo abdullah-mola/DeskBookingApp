@@ -14,7 +14,7 @@ import com.example.deskbookingappllication.databinding.FragmentRegisterBinding
 import com.example.deskbookingappllication.model.User
 import com.example.deskbookingappllication.model.viewModels.UserViewModel
 
-class Register : Fragment() {
+class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
     private val userViewModel: UserViewModel by activityViewModels()
@@ -32,7 +32,7 @@ class Register : Fragment() {
             val email = binding.etLoginEmail.text.toString().trim()
             val department = binding.etDepartment.text.toString().trim()
             val password = binding.etLoginPassword.text.toString().trim()
-            user = User(email, password, firstName, lastName, department)
+            user = User(email, password, firstName, lastName, department,null)
             userViewModel.register(user)
 
             userViewModel.registerStatusCode.observe(viewLifecycleOwner) {

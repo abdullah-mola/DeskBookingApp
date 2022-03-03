@@ -1,5 +1,7 @@
 package com.example.deskbookingappllication.ui
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,16 +11,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.deskbookingappllication.api.RetrofitInstance
 import com.example.deskbookingappllication.databinding.FragmentOfficesBinding
 import com.example.deskbookingappllication.model.viewModels.OfficeViewModel
 import com.example.deskbookingappllication.rcadapters.RvOfficeAdapter
 import com.google.gson.Gson
 
-class Offices : Fragment() {
+class OfficesFragment : Fragment() {
     private val officeViewModel: OfficeViewModel by activityViewModels()
     private var _binding: FragmentOfficesBinding? = null
     private val binding get() = _binding!!
-
+    private var preferences: SharedPreferences? = null
 
     private val officeAdapter: RvOfficeAdapter = RvOfficeAdapter()
 
@@ -27,8 +30,10 @@ class Offices : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        preferences = activity?.getSharedPreferences("Login", Context.MODE_PRIVATE)
+        RetrofitInstance.authToken = preferences?.getString("TOKEN","")
         _binding = FragmentOfficesBinding.inflate(inflater, container, false)
-
+        setActivityTitle("Offices")
         return binding.root
     }
 
@@ -44,7 +49,7 @@ class Offices : Fragment() {
         }
         officeViewModel.loadOffices()
         officeAdapter.click{
-            Navigation.findNavController(binding.root).navigate(OfficesDirections.actionBookingPlanToDesks(
+            Navigation.findNavController(binding.root).navigate(OfficesFragmentDirections.actionBookingPlanToDesks(
                 Gson().toJson(it)))
         }
 

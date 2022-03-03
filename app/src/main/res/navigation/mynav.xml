@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/offices"
-        android:name="com.example.deskbookingappllication.ui.Offices"
+        android:name="com.example.deskbookingappllication.ui.OfficesFragment"
         android:label="fragment_booking_plan"
         tools:layout="@layout/fragment_offices" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/login"
-        android:name="com.example.deskbookingappllication.ui.Login"
+        android:name="com.example.deskbookingappllication.ui.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/userProfile"
-        android:name="com.example.deskbookingappllication.ui.UserProfile"
+        android:name="com.example.deskbookingappllication.ui.UserProfileFragment"
         android:label="fragment_usesr_profile"
         tools:layout="@layout/fragment_user_profile" >
         <action
@@ -47,7 +47,7 @@
     </fragment>
     <fragment
         android:id="@+id/desks"
-        android:name="com.example.deskbookingappllication.ui.Desks"
+        android:name="com.example.deskbookingappllication.ui.DesksFragment"
         android:label="fragment_reseveration"
         tools:layout="@layout/fragment_desks" >
         <action
@@ -66,7 +66,7 @@
     </fragment>
     <fragment
         android:id="@+id/favorites"
-        android:name="com.example.deskbookingappllication.ui.Favorites"
+        android:name="com.example.deskbookingappllication.ui.FavoritesFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favourite" >
         <action
@@ -78,7 +78,7 @@
     </fragment>
     <fragment
         android:id="@+id/register"
-        android:name="com.example.deskbookingappllication.ui.Register"
+        android:name="com.example.deskbookingappllication.ui.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -87,7 +87,12 @@
     </fragment>
     <fragment
         android:id="@+id/admin"
-        android:name="com.example.deskbookingappllication.ui.Admin"
+        android:name="com.example.deskbookingappllication.ui.AdminFragment"
         android:label="Admin" />
+    <fragment
+        android:id="@+id/bookingFragment"
+        android:name="com.example.deskbookingappllication.ui.BookingFragment"
+        android:label="fragment_booking"
+        tools:layout="@layout/fragment_booking" />
 
 </navigation>

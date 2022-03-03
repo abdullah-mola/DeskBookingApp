@@ -2,9 +2,9 @@ package com.example.deskbookingappllication.ui
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -15,7 +15,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.deskbookingappllication.R
 import com.example.deskbookingappllication.databinding.ActivityMainBinding
-import com.google.android.material.internal.ContextUtils.getActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,9 +23,11 @@ class MainActivity : AppCompatActivity() {
     private val binding get() = _binding
 
     private lateinit var navController: NavController
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val toolbar = supportActionBar
+
         _binding = ActivityMainBinding.inflate(layoutInflater)
         val view = _binding.root
         setContentView(view)
@@ -60,8 +61,9 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             binding.bottomNavigatinView.visibility =
                 if (destination.id == R.id.login || destination.id == R.id.register) {
-                    View.GONE
 
+
+                    View.GONE
                 } else {
                     View.VISIBLE
                 }
@@ -71,23 +73,24 @@ class MainActivity : AppCompatActivity() {
 
             when (it.itemId) {
                 R.id.BookingPlan -> {
-                    toolbar?.title = "BookingPlan"
+
                     Navigation.findNavController(binding.navFragmentContainer)
                         .navigate(R.id.offices)
                     true
                 }
                 R.id.Profile -> {
-                    toolbar?.title = "Profile"
+
                     Navigation.findNavController(binding.navFragmentContainer)
                         .navigate(R.id.userProfile)
                     true
                 }
                 R.id.Favorites -> {
-                    toolbar?.title = "Favorites"
+
                     Navigation.findNavController(binding.navFragmentContainer)
                         .navigate(R.id.favorites)
                     true
                 }
+
                 else -> false
             }
 
@@ -98,13 +101,13 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     override fun onSupportNavigateUp(): Boolean {
 
         val navController = findNavController(R.id.navFragmentContainer)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
 
     }
+
 
 
 

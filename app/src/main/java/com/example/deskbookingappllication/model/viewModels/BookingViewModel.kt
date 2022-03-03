@@ -7,23 +7,24 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.deskbookingappllication.api.RetrofitInstance
-import com.example.deskbookingappllication.model.Comment
+import com.example.deskbookingappllication.model.Book
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.io.IOException
 
-class AdminViewModel(application: Application) : AndroidViewModel(application) {
+class BookingViewModel(application: Application) : AndroidViewModel(
+    application
+) {
+    val TAG = "BookingViewModel"
+    private var _book = MutableLiveData<Book>()
+    val book: LiveData<Book> get() = _book
 
-    private val TAG = "AdminViewModel"
-    private var commentList = MutableLiveData<List<Comment>>()
-    val comment: LiveData<List<Comment>> get() = commentList
-
-    fun loadComments(id:String) {
-        viewModelScope.launch {
+    fun booking(booking: Book) {
+        viewModelScope.launch(Dispatchers.IO) {
             val response = try {
-                RetrofitInstance.deskApi.getListOfComments(id)
+                RetrofitInstance.deskApi.bookADesk(booking)
             } catch (e: IOException) {
                 Log.e(TAG, "IOException, you might not have internet connection")
                 null
@@ -33,8 +34,11 @@ class AdminViewModel(application: Application) : AndroidViewModel(application) {
             }
             if (response?.body() != null && response.isSuccessful) {
                 withContext(Dispatchers.Main) {
-                    commentList.value = response.body()
+
+                    _book.value = response.body()
+
                 }
+
             } else {
                 Log.e(TAG, "Response not successful")
             }

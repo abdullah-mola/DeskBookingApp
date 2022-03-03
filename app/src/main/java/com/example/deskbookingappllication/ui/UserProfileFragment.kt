@@ -17,7 +17,7 @@ import com.example.deskbookingappllication.model.User
 import com.example.deskbookingappllication.model.viewModels.UserViewModel
 
 
-class UserProfile : Fragment() {
+class UserProfileFragment : Fragment() {
     private var _binding: FragmentUserProfileBinding? = null
     private val binding get() = _binding!!
     private val userViewModel: UserViewModel by activityViewModels()
@@ -34,6 +34,7 @@ class UserProfile : Fragment() {
         userViewModel.loadUser(userId)
         val passwordLayout = binding.tilPassword
         userViewModel.user.observe(viewLifecycleOwner) {
+
             binding.etProfileEmail.text = Editable.Factory.getInstance().newEditable(it.email)
             binding.etProfileFirstname.text =
                 Editable.Factory.getInstance().newEditable(it.firstname)
@@ -51,7 +52,7 @@ class UserProfile : Fragment() {
             val email = binding.etProfileEmail.text.toString().trim()
             val password = binding.etProfilePassword.text.toString().trim()
             val department = binding.etProfileDepartment.text.toString().trim()
-            user = User(email, password, firstName, lastName, department)
+            user = User(email, password, firstName, lastName, department,false)
             userViewModel.updateUser(user)
 
             userViewModel.statusCode.observe(viewLifecycleOwner){

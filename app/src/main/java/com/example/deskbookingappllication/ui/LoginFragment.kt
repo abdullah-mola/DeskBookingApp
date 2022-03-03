@@ -1,5 +1,7 @@
 package com.example.deskbookingappllication.ui
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,11 +16,8 @@ import com.example.deskbookingappllication.api.LoginRequestBody
 import com.example.deskbookingappllication.api.RetrofitInstance
 import com.example.deskbookingappllication.databinding.FragmentLoginBinding
 import com.example.deskbookingappllication.model.viewModels.UserViewModel
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
-class Login : Fragment() {
+class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
     private lateinit var user: LoginRequestBody
@@ -26,15 +25,18 @@ class Login : Fragment() {
     private lateinit var userEmail: String
     private lateinit var userPassword: String
 
+    private var preferences: SharedPreferences? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        preferences = activity?.getSharedPreferences("Login", Context.MODE_PRIVATE)
         setActivityTitle("Login")
         userModel.userLoginData.observe(viewLifecycleOwner) {
             val token = it.token
+            preferences?.edit()?.putString("TOKEN",token)?.apply()
             val userId = it.userId
-            RetrofitInstance.authToken = token
             RetrofitInstance.userId = userId
 
         }
@@ -50,10 +52,7 @@ class Login : Fragment() {
                         NavHostFragment.findNavController(this)
                             .navigate(R.id.offices)
                         Toast.makeText(context, "Logged in Successfully", Toast.LENGTH_LONG).show()
-                        GlobalScope.launch {
-                            delay(1000)
-                            activity?.fragmentManager?.popBackStack()
-                        }
+
                     }
                     401 -> {
                         Toast.makeText(

@@ -1,11 +1,10 @@
 package com.example.deskbookingappllication.api.api_interfaces
 
+import com.example.deskbookingappllication.model.Book
 import com.example.deskbookingappllication.model.Comment
 import com.example.deskbookingappllication.model.Desk
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface DeskApi {
 
@@ -21,4 +20,6 @@ interface DeskApi {
     @GET ("desk/{deskId}/comment")
     suspend fun getListOfComments(@Path("deskId")id:String?): Response<List<Comment>>
 
+    @POST("booking")
+    suspend fun bookADesk(@Body body :Book):Response<Book>
 }

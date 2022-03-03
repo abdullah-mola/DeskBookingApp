@@ -28,9 +28,8 @@ class UserViewModel(application: Application) : AndroidViewModel(
     private var _user = MutableLiveData<User>()
     val user: LiveData<User> get() = _user
     val userLoginData: LiveData<LoginResponse> get() = _userLogin
+
     fun login(user: LoginRequestBody) {
-
-
         viewModelScope.launch(Dispatchers.IO) {
             val response = try {
                 RetrofitInstance.userApi.userLogin(user)
@@ -81,6 +80,7 @@ class UserViewModel(application: Application) : AndroidViewModel(
                 withContext(Dispatchers.Main) {
                     Log.e(TAG, "Request was not successful")
                     responseCode.value = updateResponse?.code()
+
                 }
             }
         }
@@ -99,7 +99,9 @@ class UserViewModel(application: Application) : AndroidViewModel(
             }
             if (response?.body() != null && response.isSuccessful) {
                 withContext(Dispatchers.Main) {
-                    _user.value = response.body()!!
+                    _user.value = response.body()
+
+
                 }
 
 
