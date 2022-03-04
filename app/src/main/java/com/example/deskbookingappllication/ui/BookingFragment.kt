@@ -65,18 +65,25 @@ class BookingFragment : Fragment() {
                 .build()
 
 
-        binding.btnDatePickBooking.setOnClickListener {
-            datePicker.show(parentFragmentManager, dpTag)
-        }
-
-        datePicker.addOnPositiveButtonClickListener { datePicked ->
-            startDate = datePicked.first
-            endDate = datePicked.second
+        datePicker.addOnPositiveButtonClickListener {
 
         }
         binding.btnBookingBook.setOnClickListener {
+            datePicker.show(parentFragmentManager, dpTag)
+
+        }
+        binding.btnBookingCancel.setOnClickListener {
+            Navigation.findNavController(binding.root).navigate(R.id.offices)
+        }
+        datePicker.addOnPositiveButtonClickListener {
+                datePicked ->
+            startDate = datePicked.first
+            endDate = datePicked.second
+
             book = Book(deskId, convertLongToDate(startDate), convertLongToDate(endDate))
             bookingViewModel.booking(book)
+            bookingViewModel.book.observe(viewLifecycleOwner){
+            }
             bookingViewModel.statusCode.observe(viewLifecycleOwner) {
                 when (it) {
                     204 -> {

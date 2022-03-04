@@ -62,9 +62,7 @@
         <action
             android:id="@+id/action_desks_to_bookingFragment"
             app:destination="@id/bookingFragment" />
-        <action
-            android:id="@+id/action_desks_to_deskDetails"
-            app:destination="@id/deskDetails" />
+
     </fragment>
     <fragment
         android:id="@+id/favorites"
@@ -100,14 +98,6 @@
             android:name="id"
             app:argType="string" />
     </fragment>
-    <fragment
-        android:id="@+id/deskDetails"
-        android:name="com.example.deskbookingappllication.ui.DeskDetails"
-        android:label="fragment_desk_details"
-        tools:layout="@layout/fragment_desk_details">
-        <argument
-            android:name="id"
-            app:argType="string" />
-    </fragment>
+
 
 </navigation>

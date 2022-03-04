@@ -13,21 +13,12 @@
         android:layout_height="300dp"
         android:contentDescription="@string/deskimage"
         android:src="@drawable/ic_baseline_home_24"
-        app:layout_constraintBottom_toTopOf="@+id/btn_datePick_Booking"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_datePick_Booking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pick_a_date_to_book_desk"
-        app:layout_constraintBottom_toTopOf="@id/btn_booking_book"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/booking_desk_iv" />
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_booking_book"
@@ -37,7 +28,7 @@
         android:text="@string/book"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_datePick_Booking" />
+        app:layout_constraintTop_toBottomOf="@+id/booking_desk_iv" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_booking_cancel"
@@ -47,6 +38,6 @@
         android:text="@string/cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_booking_book"
-        app:layout_constraintTop_toBottomOf="@+id/btn_datePick_Booking" />
+        app:layout_constraintTop_toBottomOf="@+id/booking_desk_iv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
