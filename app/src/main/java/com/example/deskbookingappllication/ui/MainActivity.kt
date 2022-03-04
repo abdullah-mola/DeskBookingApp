@@ -1,12 +1,15 @@
 package com.example.deskbookingappllication.ui
 
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -17,11 +20,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.deskbookingappllication.R
 import com.example.deskbookingappllication.databinding.ActivityMainBinding
-import com.example.deskbookingappllication.model.User
 import com.example.deskbookingappllication.model.viewModels.UserViewModel
-import com.google.android.material.internal.ContextUtils.getActivity
-import okhttp3.internal.assertionsEnabled
-
 
 class MainActivity : AppCompatActivity() {
     private lateinit var _binding: ActivityMainBinding
@@ -29,12 +28,18 @@ class MainActivity : AppCompatActivity() {
     private val binding get() = _binding
     private val userViewModel: UserViewModel by viewModels()
     private lateinit var navController: NavController
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val toolbar = supportActionBar
         _binding = ActivityMainBinding.inflate(layoutInflater)
         val view = _binding.root
         setContentView(view)
+
+                hideSystemUI()
+
+
+
         //Hide Admin
         userViewModel.user.observe(this) {
             binding.bottomNavigatinView.menu.findItem(R.id.admin).isEnabled = it.isAdmin == true
@@ -51,8 +56,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.offices,
                 R.id.userProfile,
                 R.id.favorites,
-                R.id.register,
-                R.id.desks,
+//                R.id.register,
+//                R.id.desks,
                 R.id.admin,
             )
         )
@@ -121,7 +126,14 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
 
     }
-
+    private fun hideSystemUI() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowInsetsControllerCompat(window,
+            window.decorView.findViewById(android.R.id.content)).let { controller ->
+            controller.hide(WindowInsetsCompat.Type.systemBars())
+            controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
+    }
 
 }
 

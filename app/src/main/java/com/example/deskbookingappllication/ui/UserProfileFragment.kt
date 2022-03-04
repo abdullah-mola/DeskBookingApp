@@ -51,7 +51,9 @@ class UserProfileFragment : Fragment() {
         }
 
 
-
+        binding.btnLogout.setOnClickListener {
+            NavHostFragment.findNavController(this).navigate(R.id.login)
+        }
 
         binding.btnProfileSave.setOnClickListener {
             val firstName = binding.etProfileFirstname.text.toString().trim()

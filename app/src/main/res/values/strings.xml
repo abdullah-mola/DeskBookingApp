@@ -26,6 +26,7 @@
     <string name="book">Book</string>
     <string name="favorites">Favorites</string>
     <string name="admin">Admin</string>
+    <string name="logout">Logout</string>
 </resources>
 
 
