@@ -1,11 +1,13 @@
 package com.example.deskbookingappllication.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable.Factory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -42,9 +44,6 @@ class UserProfileFragment : Fragment() {
                 Factory.getInstance()
                     .newEditable(it.department)
 
-//            var admin: Editable? = Editable.Factory.getInstance()
-//                    .newEditable(it.isAdmin)
-//            admin = userViewModel.user.value!!.isAdmin!!
 
         }
 
@@ -97,15 +96,6 @@ class UserProfileFragment : Fragment() {
 
             }
         }
-//        }
-//        if (user.isAdmin == false) {
-
-//        }
-//            else{
-//            View.GONE.also { binding.btnCommentNavigate.visibility = it }
-//            }
-
-
         return binding.root
     }
 
@@ -117,5 +107,18 @@ class UserProfileFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true)
+            {
+                override fun handleOnBackPressed() {
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            callback
+        )
     }
 }

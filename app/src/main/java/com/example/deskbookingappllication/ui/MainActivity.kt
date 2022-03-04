@@ -35,11 +35,6 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         val view = _binding.root
         setContentView(view)
-
-                hideSystemUI()
-
-
-
         //Hide Admin
         userViewModel.user.observe(this) {
             binding.bottomNavigatinView.menu.findItem(R.id.admin).isEnabled = it.isAdmin == true
@@ -56,8 +51,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.offices,
                 R.id.userProfile,
                 R.id.favorites,
-//                R.id.register,
-//                R.id.desks,
+                R.id.register,
+                R.id.desks,
                 R.id.admin,
             )
         )
@@ -126,14 +121,7 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
 
     }
-    private fun hideSystemUI() {
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        WindowInsetsControllerCompat(window,
-            window.decorView.findViewById(android.R.id.content)).let { controller ->
-            controller.hide(WindowInsetsCompat.Type.systemBars())
-            controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        }
-    }
+
 
 }
 

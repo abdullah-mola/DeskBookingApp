@@ -1,15 +1,16 @@
 package com.example.deskbookingappllication.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.deskbookingappllication.api.RetrofitInstance
 import com.example.deskbookingappllication.databinding.FragmentAdminBinding
 import com.example.deskbookingappllication.model.viewModels.AdminViewModel
 import com.example.deskbookingappllication.rcadapters.RvCommentAdapter
@@ -54,6 +55,7 @@ class AdminFragment : Fragment() {
     private fun setUpRecyclerView() = binding.rvComment.apply {
         adapter = commentAdapter
         layoutManager = LinearLayoutManager(context)
+        setActivityTitle("Admin")
     }
     fun Fragment.setActivityTitle(title: String) {
         (activity as AppCompatActivity?)?.supportActionBar?.title = title
@@ -63,4 +65,18 @@ class AdminFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true)
+            {
+                override fun handleOnBackPressed() {
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            callback
+        )
+    }
+
 }
