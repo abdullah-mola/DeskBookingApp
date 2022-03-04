@@ -56,7 +56,7 @@ class DesksFragment : Fragment() {
 
     }
 
-    private fun setUpRecyclerView() = binding.rvDesks.apply {123123
+    private fun setUpRecyclerView() = binding.rvDesks.apply {
         adapter = deskAdapter
         layoutManager = GridLayoutManager(context, 2)
     }
