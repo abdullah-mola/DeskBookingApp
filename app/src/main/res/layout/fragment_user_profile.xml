@@ -123,16 +123,6 @@
         app:layout_constraintTop_toBottomOf="@+id/til_department" />
 
     <Button
-        android:id="@+id/btn_profile_cancel"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/cancel"
-        app:layout_constraintEnd_toStartOf="@+id/btn_profile_save"
-        app:layout_constraintTop_toBottomOf="@+id/til_department" />
-
-    <Button
         android:id="@+id/btn_comment_navigate"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
