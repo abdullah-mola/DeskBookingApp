@@ -25,7 +25,7 @@ class FavoritesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFavouriteBinding.inflate(inflater, container, false)
-
+        setActivityTitle("Favorites")
 
         return binding.root
     }
@@ -77,4 +77,5 @@ class FavoritesFragment : Fragment() {
             callback
         )
     }
+
 }

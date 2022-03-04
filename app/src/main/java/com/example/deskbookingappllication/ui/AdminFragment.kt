@@ -29,7 +29,7 @@ class AdminFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAdminBinding.inflate(inflater, container, false)
-
+        setActivityTitle("Admin")
         return binding.root
 
     }
@@ -78,5 +78,6 @@ class AdminFragment : Fragment() {
             callback
         )
     }
+
 
 }
