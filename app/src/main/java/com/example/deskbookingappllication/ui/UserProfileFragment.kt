@@ -102,15 +102,6 @@ class UserProfileFragment : Fragment() {
 
             }
         }
-//        }
-//        if (user.isAdmin == false) {
-
-//        }
-//            else{
-//            View.GONE.also { binding.btnCommentNavigate.visibility = it }
-//            }
-
-
         return binding.root
     }
 
