@@ -50,9 +50,9 @@ class UserProfileFragment : Fragment() {
         }
 
 
-        binding.btnLogout.setOnClickListener {
-            NavHostFragment.findNavController(this).navigate(R.id.login)
-        }
+//        binding.btnLogout.setOnClickListener {
+//            NavHostFragment.findNavController(this).navigate(R.id.login)
+//        }
 
         binding.btnProfileSave.setOnClickListener {
             val firstName = binding.etProfileFirstname.text.toString().trim()
@@ -60,7 +60,7 @@ class UserProfileFragment : Fragment() {
             val email = binding.etProfileEmail.text.toString().trim()
             val password = binding.etProfilePassword.text.toString().trim()
             val department = binding.etProfileDepartment.text.toString().trim()
-            user = User(email, password, firstName, lastName, department, admin)
+            user = User(email, password, firstName, lastName, department)
             userViewModel.updateUser(user)
 
             userViewModel.statusCode.observe(viewLifecycleOwner) {
