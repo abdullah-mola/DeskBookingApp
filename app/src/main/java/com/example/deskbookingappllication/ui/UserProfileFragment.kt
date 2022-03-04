@@ -52,7 +52,7 @@ class UserProfileFragment : Fragment() {
             val email = binding.etProfileEmail.text.toString().trim()
             val password = binding.etProfilePassword.text.toString().trim()
             val department = binding.etProfileDepartment.text.toString().trim()
-            user = User(email, password, firstName, lastName, department,false)
+            user = User(email, password, firstName, lastName, department)
             userViewModel.updateUser(user)
 
             userViewModel.statusCode.observe(viewLifecycleOwner){

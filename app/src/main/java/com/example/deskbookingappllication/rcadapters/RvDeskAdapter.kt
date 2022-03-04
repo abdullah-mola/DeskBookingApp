@@ -8,22 +8,22 @@ import com.bumptech.glide.Glide
 import com.example.deskbookingappllication.databinding.CvDesksBinding
 import com.example.deskbookingappllication.model.Desk
 
-class RvDeskAdapter : RecyclerView.Adapter<RvDeskViewHolder>() {
+class RvDeskAdapter : RecyclerView.Adapter<RvDeskDetailsViewHolder>() {
     var currentItem : Desk?=null
     private var deskList: List<Desk> = listOf()
     private lateinit var click: (desk: Desk) -> Unit
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RvDeskViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RvDeskDetailsViewHolder {
 
         val binding =
             CvDesksBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent, false
             )
-        return RvDeskViewHolder(binding)
+        return RvDeskDetailsViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: RvDeskViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RvDeskDetailsViewHolder, position: Int) {
        currentItem = deskList[position]
         holder.binding.apply {
             cvTvDesk.text = currentItem!!.label
@@ -47,4 +47,4 @@ class RvDeskAdapter : RecyclerView.Adapter<RvDeskViewHolder>() {
     }
 }
 
-class RvDeskViewHolder(val binding: CvDesksBinding) : RecyclerView.ViewHolder(binding.root)
+class RvDeskDetailsViewHolder(val binding: CvDesksBinding) : RecyclerView.ViewHolder(binding.root)

@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.deskbookingappllication.api.RetrofitInstance
 import com.example.deskbookingappllication.model.Desk
+import com.example.deskbookingappllication.model.DeskEquipmentDetails
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -20,6 +21,8 @@ class DeskViewModel(application: Application) : AndroidViewModel(
     private val TAG = "DeskViewModel"
     private var deskList = MutableLiveData<List<Desk>>()
     val desks: LiveData<List<Desk>> get() = deskList
+    private var _deskDetails = MutableLiveData<DeskEquipmentDetails>()
+    val deskDetails:LiveData<DeskEquipmentDetails> get() = _deskDetails
 
     fun loadDesks() {
         viewModelScope.launch {
@@ -83,6 +86,30 @@ class DeskViewModel(application: Application) : AndroidViewModel(
             if (response?.body() != null && response.isSuccessful) {
                 withContext(Dispatchers.Main) {
                     deskList.value = response.body()!!
+                }
+
+
+            } else {
+                Log.e(TAG, "Response not successful")
+            }
+        }
+    }
+    fun getDeskDetails(id:String){
+        viewModelScope.launch {
+            val response = try {
+                RetrofitInstance.deskApi.getDeskDetails(id)
+
+            } catch (e: IOException) {
+                Log.e(TAG, "IOException, you might not have internet connection")
+                null
+            } catch (e: HttpException) {
+                Log.e(TAG, "HttpException, unexpected response")
+                null
+            }
+            if (response?.body() != null && response.isSuccessful) {
+                withContext(Dispatchers.Main) {
+                   _deskDetails.value = response.body()!!
+
                 }
 
 

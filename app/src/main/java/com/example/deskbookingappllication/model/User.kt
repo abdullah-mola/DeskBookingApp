@@ -6,5 +6,14 @@ data class User(
     val firstname: String?,
     val lastname: String?,
     val department: String?,
-    val isAdmin:Boolean?
-)
+    val isAdmin: Boolean?
+) {
+    constructor(
+        email:String?,
+        password:String?,
+        firstname:String?,
+        lastname:String?,
+        department:String?
+
+    ) : this(email,password,firstname,lastname,department,null)
+}

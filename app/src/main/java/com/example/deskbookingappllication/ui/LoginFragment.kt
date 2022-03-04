@@ -24,23 +24,30 @@ class LoginFragment : Fragment() {
     private val userModel: UserViewModel by activityViewModels()
     private lateinit var userEmail: String
     private lateinit var userPassword: String
-
+    private lateinit var token:String
     private var preferences: SharedPreferences? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        preferences = activity?.getSharedPreferences("Login", Context.MODE_PRIVATE)
+
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        preferences = activity?.getSharedPreferences("Login", Context.MODE_PRIVATE)
+
         setActivityTitle("Login")
         userModel.userLoginData.observe(viewLifecycleOwner) {
-            val token = it.token
-            preferences?.edit()?.putString("TOKEN",token)?.apply()
+             token = it.token
             val userId = it.userId
             RetrofitInstance.userId = userId
 
+
+
         }
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
+
         binding.btnLogin.setOnClickListener {
             userEmail = binding.etLoginEmail.text.toString()
             userPassword = binding.etLoginPassword.text.toString()
@@ -49,6 +56,10 @@ class LoginFragment : Fragment() {
             userModel.statusCode.observe(viewLifecycleOwner) {
                 when (it) {
                     200 -> {
+                        if(binding.loginCheckBox.isChecked){
+                            RetrofitInstance.authToken = token
+                            preferences?.edit()?.putString("TOKEN",token)?.apply()
+                        }
                         NavHostFragment.findNavController(this)
                             .navigate(R.id.offices)
                         Toast.makeText(context, "Logged in Successfully", Toast.LENGTH_LONG).show()
@@ -64,8 +75,9 @@ class LoginFragment : Fragment() {
                 }
             }
 
-
         }
+
+
         binding.btnRegister.setOnClickListener {
             NavHostFragment.findNavController(this)
                 .navigate(R.id.register)
@@ -77,7 +89,6 @@ class LoginFragment : Fragment() {
     fun Fragment.setActivityTitle(title: String) {
         (activity as AppCompatActivity?)?.supportActionBar?.title = title
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

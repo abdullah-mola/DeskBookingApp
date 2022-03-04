@@ -4,4 +4,5 @@
     <string name="office_image">Office Image</string>
     <string name="cancel">Cancel</string>
     <string name="favorites">Favorites</string>
+    <string name="remember_me">Remember me</string>
 </resources>

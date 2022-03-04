@@ -43,8 +43,8 @@ class UserViewModel(application: Application) : AndroidViewModel(
             if (response?.body() != null && response.isSuccessful) {
                 withContext(Dispatchers.Main) {
                     Log.d(TAG, "Request was success")
-                    responseCode.value = response.code()
                     _userLogin.value = response.body()
+                    responseCode.value = response.code()
                 }
             } else {
                 withContext(Dispatchers.Main) {
@@ -73,8 +73,9 @@ class UserViewModel(application: Application) : AndroidViewModel(
             if (updateResponse?.body() != null && updateResponse.isSuccessful) {
                 withContext(Dispatchers.Main) {
                     Log.d(TAG, "Request was success")
-                    responseCode.value = updateResponse.code()
                     _user.value = updateResponse.body()
+                    responseCode.value = updateResponse.code()
+
                 }
             } else {
                 withContext(Dispatchers.Main) {

@@ -9,7 +9,10 @@
         android:id="@+id/offices"
         android:name="com.example.deskbookingappllication.ui.OfficesFragment"
         android:label="fragment_booking_plan"
-        tools:layout="@layout/fragment_offices" >
+        app:popUpTo="@id/desks"
+        app:popUpToInclusive="true"
+        tools:layout="@layout/fragment_offices"
+        >
         <action
             android:id="@+id/action_bookingPlan_to_desks"
             app:destination="@id/desks" />
@@ -20,6 +23,8 @@
         android:id="@+id/login"
         android:name="com.example.deskbookingappllication.ui.LoginFragment"
         android:label="fragment_login"
+        app:popUpTo="@id/offices"
+        app:popUpToInclusive="true"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_login_to_register"
@@ -28,6 +33,8 @@
     </fragment>
     <fragment
         android:id="@+id/userProfile"
+        app:popUpTo="@id/offices"
+        app:popUpToInclusive="true"
         android:name="com.example.deskbookingappllication.ui.UserProfileFragment"
         android:label="fragment_usesr_profile"
         tools:layout="@layout/fragment_user_profile" >

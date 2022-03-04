@@ -32,6 +32,7 @@ class OfficesFragment : Fragment() {
     ): View {
         preferences = activity?.getSharedPreferences("Login", Context.MODE_PRIVATE)
         RetrofitInstance.authToken = preferences?.getString("TOKEN","")
+
         _binding = FragmentOfficesBinding.inflate(inflater, container, false)
         setActivityTitle("Offices")
         return binding.root
