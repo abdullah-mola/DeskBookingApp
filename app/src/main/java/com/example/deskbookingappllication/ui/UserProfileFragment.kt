@@ -2,6 +2,7 @@ package com.example.deskbookingappllication.ui
 
 import android.os.Bundle
 import android.text.Editable
+import android.text.Editable.Factory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,7 @@ class UserProfileFragment : Fragment() {
     private val binding get() = _binding!!
     private val userViewModel: UserViewModel by activityViewModels()
     private lateinit var user: User
+    var admin: Boolean = false
 
 
     override fun onCreateView(
@@ -34,15 +36,20 @@ class UserProfileFragment : Fragment() {
         userViewModel.loadUser(userId)
         val passwordLayout = binding.tilPassword
         userViewModel.user.observe(viewLifecycleOwner) {
-
-            binding.etProfileEmail.text = Editable.Factory.getInstance().newEditable(it.email)
+            binding.etProfileEmail.text = Factory.getInstance().newEditable(it.email)
             binding.etProfileFirstname.text =
-                Editable.Factory.getInstance().newEditable(it.firstname)
-            binding.etProfileLastname.text = Editable.Factory.getInstance().newEditable(it.lastname)
+                Factory.getInstance().newEditable(it.firstname)
+            binding.etProfileLastname.text = Factory.getInstance().newEditable(it.lastname)
             binding.etProfileDepartment.text =
-                Editable.Factory.getInstance()
+                Factory.getInstance()
                     .newEditable(it.department)
+
+//            var admin: Editable? = Editable.Factory.getInstance()
+//                    .newEditable(it.isAdmin)
+//            admin = userViewModel.user.value!!.isAdmin!!
+
         }
+
 
 
 
@@ -52,17 +59,22 @@ class UserProfileFragment : Fragment() {
             val email = binding.etProfileEmail.text.toString().trim()
             val password = binding.etProfilePassword.text.toString().trim()
             val department = binding.etProfileDepartment.text.toString().trim()
-            user = User(email, password, firstName, lastName, department,false)
+            user = User(email, password, firstName, lastName, department, admin)
             userViewModel.updateUser(user)
 
-            userViewModel.statusCode.observe(viewLifecycleOwner){
-                when (it){
+            userViewModel.statusCode.observe(viewLifecycleOwner) {
+                when (it) {
                     200 -> {
-                        Toast.makeText(context,"Saved Successfully",Toast.LENGTH_SHORT).show()
+
+                        Toast.makeText(context, "Saved Successfully", Toast.LENGTH_SHORT).show()
                     }
                     400 -> {
                         passwordLayout.error = "Please Enter Your password"
-                        Toast.makeText(context,"Please make sure you filled all data ",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            context,
+                            "Please make sure you filled all data ",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
 
 
@@ -71,12 +83,36 @@ class UserProfileFragment : Fragment() {
             }
         }
 
-        binding.btnCommentNavigate.setOnClickListener {
-            NavHostFragment.findNavController(this).navigate(R.id.admin)
+        val playButton = binding.btnCommentNavigate
+//
+        userViewModel.user.observe(viewLifecycleOwner) {
+
+
+            if (it.isAdmin == true) {
+
+                playButton.visibility = View.VISIBLE
+                binding.btnCommentNavigate.setOnClickListener {
+
+                    NavHostFragment.findNavController(this).navigate(R.id.admin)
+                }
+            } else {
+                playButton.visibility = View.GONE
+
+
+            }
         }
+//        }
+//        if (user.isAdmin == false) {
+
+//        }
+//            else{
+//            View.GONE.also { binding.btnCommentNavigate.visibility = it }
+//            }
+
 
         return binding.root
     }
+
     fun Fragment.setActivityTitle(title: String) {
         (activity as AppCompatActivity?)?.supportActionBar?.title = title
     }
