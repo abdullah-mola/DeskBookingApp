@@ -28,6 +28,7 @@
     <string name="admin">Admin</string>
     <string name="logout">Logout</string>
     <string name="remember_me">Remember me</string>
+    <string name="like">LIKE</string>
 </resources>
 
 

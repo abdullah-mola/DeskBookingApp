@@ -14,10 +14,13 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.deskbookingappllication.R
+import com.example.deskbookingappllication.api.RetrofitInstance
 import com.example.deskbookingappllication.databinding.FragmentBookingBinding
 import com.example.deskbookingappllication.model.Book
 import com.example.deskbookingappllication.model.Desk
+import com.example.deskbookingappllication.model.DeskId
 import com.example.deskbookingappllication.model.viewModels.BookingViewModel
+import com.example.deskbookingappllication.model.viewModels.DeskViewModel
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -30,6 +33,8 @@ class BookingFragment : Fragment() {
     private val binding get() = _binding!!
     private val args: BookingFragmentArgs by navArgs()
     private val bookingViewModel: BookingViewModel by activityViewModels()
+    private val deskViewModel: DeskViewModel by activityViewModels()
+
     private lateinit var book: Book
     private var startDate: Long = 0
     private var endDate: Long = 0
@@ -53,6 +58,7 @@ class BookingFragment : Fragment() {
         val desk = Gson().fromJson(deskArgs, Desk::class.java)
         Glide.with(binding.root).load(desk.map).into(binding.bookingDeskIv)
         val deskId = desk.desk_id
+        val deskid:DeskId = DeskId(deskId)
         val today = MaterialDatePicker.todayInUtcMilliseconds()
         val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
         calendar.timeInMillis = today
@@ -121,6 +127,13 @@ class BookingFragment : Fragment() {
                 }
             }
         }
+
+        binding.btnLike.setOnClickListener {
+            deskViewModel.setDeskAsFavourite(deskid)
+
+        }
+
+
     }
 
     private fun convertLongToDate(time: Long): String {
