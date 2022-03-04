@@ -2,23 +2,29 @@ package com.example.deskbookingappllication.rcadapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.deskbookingappllication.databinding.CvDesksBinding
 import com.example.deskbookingappllication.model.Desk
-import com.example.deskbookingappllication.model.viewModels.DeskViewModel
+
+
 
 class RvDeskAdapter : RecyclerView.Adapter<RvDeskDetailsViewHolder>() {
+    interface OnItemClickListener {
+        fun onItemClicked(position: Int)
+    }
+
+    interface OnItemLongClickListener {
+        fun onItemLongClicked(view:View,position: Int): Boolean
+    }
+
     var currentItem : Desk?=null
     private var deskList: List<Desk> = listOf()
     private lateinit var click: (desk: Desk) -> Unit
 
- 
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RvDeskDetailsViewHolder {

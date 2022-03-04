@@ -43,7 +43,7 @@ class FavoritesFragment : Fragment() {
         deskAdapter.click {
 
         }
-        //deskViewModel.loadDesks()
+
 
     }
 
