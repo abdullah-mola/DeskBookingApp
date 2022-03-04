@@ -8,7 +8,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.deskbookingappllication.api.RetrofitInstance
 import com.example.deskbookingappllication.model.Desk
-import com.example.deskbookingappllication.model.DeskEquipmentDetails
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -21,8 +20,8 @@ class DeskViewModel(application: Application) : AndroidViewModel(
     private val TAG = "DeskViewModel"
     private var deskList = MutableLiveData<List<Desk>>()
     val desks: LiveData<List<Desk>> get() = deskList
-    private var _deskDetails = MutableLiveData<DeskEquipmentDetails>()
-    val deskDetails:LiveData<DeskEquipmentDetails> get() = _deskDetails
+    private var _deskDetails = MutableLiveData<Desk>()
+    val deskDetails:LiveData<Desk> get() = _deskDetails
 
     fun loadDesks() {
         viewModelScope.launch {
@@ -71,6 +70,7 @@ class DeskViewModel(application: Application) : AndroidViewModel(
             }
         }
     }
+
     fun loadDesksByOfficeid(id:String){
         viewModelScope.launch {
             val response = try {
@@ -94,6 +94,7 @@ class DeskViewModel(application: Application) : AndroidViewModel(
             }
         }
     }
+
     fun getDeskDetails(id:String){
         viewModelScope.launch {
             val response = try {

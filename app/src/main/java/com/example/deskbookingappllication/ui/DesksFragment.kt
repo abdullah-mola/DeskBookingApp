@@ -10,7 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.deskbookingappllication.R
+import com.example.deskbookingappllication.api.RetrofitInstance
 import com.example.deskbookingappllication.databinding.FragmentDesksBinding
 import com.example.deskbookingappllication.model.Office
 import com.example.deskbookingappllication.model.viewModels.DeskViewModel
@@ -47,7 +47,11 @@ class DesksFragment : Fragment() {
 
         deskViewModel.loadDesksByOfficeid(office.office_id)
         deskAdapter.click {
-            Navigation.findNavController(binding.root).navigate(DesksFragmentDirections.actionDesksToBookingFragment(Gson().toJson(it)))
+            RetrofitInstance.deskId = it.desk_id
+                Navigation.findNavController(binding.root).navigate(DesksFragmentDirections.actionDesksToDeskDetails(Gson().toJson(it)))
+//            Navigation.findNavController(binding.root)
+//                .navigate(DesksFragmentDirections.actionDesksToBookingFragment(Gson().toJson(it)))
+
         }
 
     }

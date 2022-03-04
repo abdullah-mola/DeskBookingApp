@@ -1,7 +1,6 @@
 package com.example.deskbookingappllication.ui
 
 import android.os.Bundle
-import android.text.Editable
 import android.text.Editable.Factory
 import android.view.LayoutInflater
 import android.view.View
@@ -23,15 +22,14 @@ class UserProfileFragment : Fragment() {
     private val binding get() = _binding!!
     private val userViewModel: UserViewModel by activityViewModels()
     private lateinit var user: User
-    var admin: Boolean = false
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentUserProfileBinding.inflate(inflater, container, false)
+        setActivityTitle("User Profile")
         val userId: String = RetrofitInstance.userId.toString()
         userViewModel.loadUser(userId)
         val passwordLayout = binding.tilPassword
@@ -50,10 +48,6 @@ class UserProfileFragment : Fragment() {
 
         }
 
-
-//        binding.btnLogout.setOnClickListener {
-//            NavHostFragment.findNavController(this).navigate(R.id.login)
-//        }
 
         binding.btnProfileSave.setOnClickListener {
             val firstName = binding.etProfileFirstname.text.toString().trim()

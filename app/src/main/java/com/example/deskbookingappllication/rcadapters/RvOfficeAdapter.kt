@@ -20,7 +20,6 @@ class RvOfficeAdapter : RecyclerView.Adapter<RvViewHolder>() {
     override fun onBindViewHolder(holder: RvViewHolder, position: Int) {
         holder.binding.apply {
             val currentItem = officeList[position]
-            cvTvOffice.text = currentItem.office_name
             Glide.with(holder.binding.root).load(currentItem.map).into(cvIvOffice)
         }
         holder.binding.root.setOnClickListener {

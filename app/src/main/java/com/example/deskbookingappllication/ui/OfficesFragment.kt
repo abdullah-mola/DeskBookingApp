@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.deskbookingappllication.R
 import com.example.deskbookingappllication.api.RetrofitInstance
 import com.example.deskbookingappllication.databinding.FragmentOfficesBinding
 import com.example.deskbookingappllication.model.viewModels.OfficeViewModel
@@ -52,6 +53,7 @@ class OfficesFragment : Fragment() {
         officeAdapter.click{
             Navigation.findNavController(binding.root).navigate(OfficesFragmentDirections.actionBookingPlanToDesks(
                 Gson().toJson(it)))
+
         }
 
 
