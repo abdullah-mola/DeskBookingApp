@@ -18,6 +18,8 @@ class BookingViewModel(application: Application) : AndroidViewModel(
     application
 ) {
     val TAG = "BookingViewModel"
+    private var _statusCode = MutableLiveData<Int>()
+    val statusCode: LiveData<Int> get() = _statusCode
     private var _book = MutableLiveData<Book>()
     val book: LiveData<Book> get() = _book
 
@@ -37,10 +39,15 @@ class BookingViewModel(application: Application) : AndroidViewModel(
 
                     _book.value = response.body()
 
+                    _statusCode.value = response.code()
+
                 }
 
             } else {
-                Log.e(TAG, "Response not successful")
+                withContext(Dispatchers.Main)
+                {
+                    _statusCode.value = response?.code()
+                }
             }
         }
     }

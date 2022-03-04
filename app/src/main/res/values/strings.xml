@@ -13,12 +13,18 @@
     <string name="profile">Profile</string>
     <string name="Profile">Profile</string>
     <string name="password">Password</string>
-    <string name="cancel">Cancel</string>
+    <string name="office_image">Office Image</string>
+
     <string name="save">Save</string>
     <string name="first_name">First Name</string>
     <string name="email">Email</string>
     <string name="last_name">Last Name</string>
     <string name="comments">Comments</string>
+    <string name="deskimage">deskImage</string>
+    <string name="pick_a_date_to_book_desk">Pick a date to Book Desk</string>
+    <string name="cancel">Cancel</string>
+    <string name="book">Book</string>
+    <string name="favorites">Favorites</string>
 </resources>
 
 

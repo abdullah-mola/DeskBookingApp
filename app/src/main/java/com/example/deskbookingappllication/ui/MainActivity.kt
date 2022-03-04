@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         val view = _binding.root
         setContentView(view)
 
-
+       val toolbar = supportActionBar
         //Navigation {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navFragmentContainer) as NavHostFragment
@@ -73,19 +73,19 @@ class MainActivity : AppCompatActivity() {
 
             when (it.itemId) {
                 R.id.BookingPlan -> {
-
+                    toolbar?.title = "BookingPlan"
                     Navigation.findNavController(binding.navFragmentContainer)
                         .navigate(R.id.offices)
                     true
                 }
                 R.id.Profile -> {
-
+                    toolbar?.title = "Profile"
                     Navigation.findNavController(binding.navFragmentContainer)
                         .navigate(R.id.userProfile)
                     true
                 }
                 R.id.Favorites -> {
-
+                    toolbar?.title = "Favorites"
                     Navigation.findNavController(binding.navFragmentContainer)
                         .navigate(R.id.favorites)
                     true

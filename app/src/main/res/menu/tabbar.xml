@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/BookingPlan"
-        android:icon="@drawable/bookingplan"
-        android:title="@string/bookingplan"
-        android:enabled="true"/>
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/bookingplan" />
     <item
         android:id="@+id/Profile"
+        android:enabled="true"
         android:icon="@drawable/profile"
-        android:title="@string/profile"
-        android:enabled="true"/>
+        android:title="@string/profile" />
     <item
         android:id="@+id/Favorites"
+        android:enabled="true"
         android:icon="@drawable/favorite"
-        android:title="Favorites"
-        android:enabled="true"/>
+        android:title="@string/favorites" />
 </menu>

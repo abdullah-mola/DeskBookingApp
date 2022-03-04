@@ -2,4 +2,6 @@
 <resources>
     <string name="login">LOGIN</string>
     <string name="office_image">Office Image</string>
+    <string name="cancel">Cancel</string>
+    <string name="favorites">Favorites</string>
 </resources>

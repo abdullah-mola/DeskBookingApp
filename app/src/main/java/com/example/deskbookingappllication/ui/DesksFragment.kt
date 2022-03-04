@@ -47,7 +47,7 @@ class DesksFragment : Fragment() {
 
         deskViewModel.loadDesksByOfficeid(office.office_id)
         deskAdapter.click {
-            Navigation.findNavController(binding.root).navigate(R.id.bookingFragment)
+            Navigation.findNavController(binding.root).navigate(DesksFragmentDirections.actionDesksToBookingFragment(Gson().toJson(it)))
         }
 
     }
