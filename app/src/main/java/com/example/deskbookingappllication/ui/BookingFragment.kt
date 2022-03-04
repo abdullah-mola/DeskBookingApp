@@ -36,6 +36,7 @@ class BookingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         _binding = FragmentBookingBinding.inflate(inflater, container, false)
 
 
@@ -45,6 +46,7 @@ class BookingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val deskArgs = args.id
         val desk = Gson().fromJson(deskArgs, Desk::class.java)
         Glide.with(binding.root).load(desk.map).into(binding.bookingDeskIv)

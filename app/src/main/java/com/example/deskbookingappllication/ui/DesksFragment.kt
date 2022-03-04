@@ -65,4 +65,5 @@ class DesksFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
