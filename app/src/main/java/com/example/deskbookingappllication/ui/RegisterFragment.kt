@@ -25,7 +25,7 @@ class RegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
-
+        setActivityTitle("Register")
         binding.btnSignup.setOnClickListener {
             val firstName = binding.txtInputEditTextFirstname.text.toString().trim()
             val lastName = binding.txtInputEditTextLastname.text.toString().trim()
