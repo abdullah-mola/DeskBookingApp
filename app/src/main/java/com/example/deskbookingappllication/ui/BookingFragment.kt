@@ -3,25 +3,27 @@ package com.example.deskbookingappllication.ui
 import android.content.Context
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
+import android.text.SpannableStringBuilder
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.bold
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.deskbookingappllication.R
-import com.example.deskbookingappllication.api.RetrofitInstance
 import com.example.deskbookingappllication.databinding.FragmentBookingBinding
 import com.example.deskbookingappllication.model.Book
 import com.example.deskbookingappllication.model.Desk
 import com.example.deskbookingappllication.model.DeskId
-import com.example.deskbookingappllication.model.viewModels.BookingViewModel
-import com.example.deskbookingappllication.model.viewModels.DeskViewModel
+import com.example.deskbookingappllication.viewModels.BookingViewModel
+import com.example.deskbookingappllication.viewModels.DeskViewModel
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -59,7 +61,8 @@ class BookingFragment : Fragment() {
         val desk = Gson().fromJson(deskArgs, Desk::class.java)
         Glide.with(binding.root).load(desk.map).into(binding.bookingDeskIv)
         val deskId = desk.desk_id
-        val deskid:DeskId = DeskId(deskId)
+        Log.d("hadi", "onViewCreated: $deskId")
+        val deskIdObject = DeskId(deskId)
         val today = MaterialDatePicker.todayInUtcMilliseconds()
         val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
         calendar.timeInMillis = today
@@ -74,9 +77,9 @@ class BookingFragment : Fragment() {
                 .build()
 
 
-        datePicker.addOnPositiveButtonClickListener {
+        val equipment = SpannableStringBuilder().bold{append("Equipments: \n\n")}.append(desk.equipment.joinToString())
+        binding.TvEquipment.text = equipment
 
-        }
         binding.btnBookingBook.setOnClickListener {
             datePicker.show(parentFragmentManager, dpTag)
 
@@ -84,14 +87,14 @@ class BookingFragment : Fragment() {
         binding.btnBookingCancel.setOnClickListener {
             Navigation.findNavController(binding.root).navigate(R.id.offices)
         }
-        datePicker.addOnPositiveButtonClickListener {
-                datePicked ->
+
+        datePicker.addOnPositiveButtonClickListener { datePicked ->
             startDate = datePicked.first
             endDate = datePicked.second
 
             book = Book(deskId, convertLongToDate(startDate), convertLongToDate(endDate))
             bookingViewModel.booking(book)
-            bookingViewModel.book.observe(viewLifecycleOwner){
+            bookingViewModel.book.observe(viewLifecycleOwner) {
             }
             bookingViewModel.statusCode.observe(viewLifecycleOwner) {
                 when (it) {
@@ -130,8 +133,36 @@ class BookingFragment : Fragment() {
         }
 
         binding.btnLike.setOnClickListener {
-            deskViewModel.setDeskAsFavourite(deskid)
 
+            deskViewModel.setDeskAsFavourite(deskIdObject)
+            deskViewModel.deskStatusCode.observe(viewLifecycleOwner){
+                when(it){
+                    204 -> {
+                        Toast.makeText(
+                            context,
+                            "Desk added successfully to Favorites",
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
+                    }
+                }
+            }
+
+        }
+        binding.btnDesLike.setOnClickListener {
+            deskViewModel.removeDeskFromFavourite(deskIdObject)
+            deskViewModel.deskStatusCode.observe(viewLifecycleOwner){
+                when(it){
+                    204 -> {
+                        Toast.makeText(
+                            context,
+                            "Desk removed successfully from Favorites",
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
+                    }
+                }
+            }
         }
 
 
@@ -142,11 +173,11 @@ class BookingFragment : Fragment() {
         val format = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         return format.format(date)
     }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         val callback: OnBackPressedCallback =
-            object : OnBackPressedCallback(true)
-            {
+            object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                 }
             }
@@ -155,6 +186,7 @@ class BookingFragment : Fragment() {
             callback
         )
     }
+
     fun Fragment.setActivityTitle(title: String) {
         (activity as AppCompatActivity?)?.supportActionBar?.title = title
     }

@@ -1,4 +1,4 @@
-package com.example.deskbookingappllication.model.viewModels
+package com.example.deskbookingappllication.viewModels
 
 import android.app.Application
 import android.util.Log

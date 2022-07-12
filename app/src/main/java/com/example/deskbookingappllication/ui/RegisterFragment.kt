@@ -12,7 +12,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.deskbookingappllication.R
 import com.example.deskbookingappllication.databinding.FragmentRegisterBinding
 import com.example.deskbookingappllication.model.User
-import com.example.deskbookingappllication.model.viewModels.UserViewModel
+import com.example.deskbookingappllication.viewModels.UserViewModel
 
 class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null

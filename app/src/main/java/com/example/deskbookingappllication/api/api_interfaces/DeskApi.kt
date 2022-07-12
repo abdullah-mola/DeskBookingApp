@@ -16,6 +16,8 @@ interface DeskApi {
     suspend fun getListOfFavouriteDesks(): Response<List<Desk>>
     @POST("favourite")
     suspend fun setDeskFavorite(@Body body:DeskId):Response<DeskId>
+    @HTTP(method = "DELETE", path = "favourite", hasBody = true)
+    suspend fun removeDeskFromFavorite(@Body body:DeskId):Response<Unit>
 
     @GET("desk")
     suspend fun getListOfDesksByOfficeId(@Query("office") id: String): Response<List<Desk>>

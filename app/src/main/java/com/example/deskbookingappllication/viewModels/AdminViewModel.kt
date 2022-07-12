@@ -1,4 +1,4 @@
-package com.example.deskbookingappllication.model.viewModels
+package com.example.deskbookingappllication.viewModels
 
 import android.app.Application
 import android.util.Log
@@ -7,26 +7,23 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.deskbookingappllication.api.RetrofitInstance
-import com.example.deskbookingappllication.model.Book
+import com.example.deskbookingappllication.model.Comment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.io.IOException
 
-class BookingViewModel(application: Application) : AndroidViewModel(
-    application
-) {
-    val TAG = "BookingViewModel"
-    private var _statusCode = MutableLiveData<Int>()
-    val statusCode: LiveData<Int> get() = _statusCode
-    private var _book = MutableLiveData<Book>()
-    val book: LiveData<Book> get() = _book
+class AdminViewModel(application: Application) : AndroidViewModel(application) {
 
-    fun booking(booking: Book) {
-        viewModelScope.launch(Dispatchers.IO) {
+    private val TAG = "AdminViewModel"
+    private var commentList = MutableLiveData<List<Comment>>()
+    val comment: LiveData<List<Comment>> get() = commentList
+
+    fun loadComments(id:String) {
+        viewModelScope.launch {
             val response = try {
-                RetrofitInstance.deskApi.bookADesk(booking)
+                RetrofitInstance.deskApi.getListOfComments(id)
             } catch (e: IOException) {
                 Log.e(TAG, "IOException, you might not have internet connection")
                 null
@@ -36,18 +33,10 @@ class BookingViewModel(application: Application) : AndroidViewModel(
             }
             if (response?.body() != null && response.isSuccessful) {
                 withContext(Dispatchers.Main) {
-
-                    _book.value = response.body()
-
-                    _statusCode.value = response.code()
-
+                    commentList.value = response.body()
                 }
-
             } else {
-                withContext(Dispatchers.Main)
-                {
-                    _statusCode.value = response?.code()
-                }
+                Log.e(TAG, "Response not successful")
             }
         }
     }

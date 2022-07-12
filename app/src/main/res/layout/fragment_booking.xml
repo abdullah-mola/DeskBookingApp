@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     tools:context=".ui.BookingFragment">
 
 
@@ -14,40 +15,66 @@
         android:contentDescription="@string/deskimage"
         android:src="@drawable/ic_baseline_home_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/TvEquipment"
+        android:layout_width="match_parent"
+        android:layout_margin="16dp"
+        android:textSize="18sp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/booking_desk_iv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_booking_book"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
+        android:layout_margin="28dp"
         android:text="@string/book"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/booking_desk_iv" />
+        app:layout_constraintTop_toBottomOf="@+id/TvEquipment" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_booking_cancel"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
+        android:layout_margin="28dp"
         android:text="@string/cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_booking_book"
-        app:layout_constraintTop_toBottomOf="@+id/booking_desk_iv" />
+        app:layout_constraintTop_toBottomOf="@+id/TvEquipment" />
 
-    <com.google.android.material.button.MaterialButton
+
+    <ImageButton
         android:id="@+id/btnLike"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
-        android:text="@string/like"
-        android:layout_margin="16dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="28dp"
+        android:background="@drawable/roundedcorner"
+        android:contentDescription="@string/likebutton"
+        android:src="@drawable/ic_baseline_thumb_up_alt_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/booking_desk_iv"/>
+        app:layout_constraintStart_toEndOf="@id/btnDesLike"
+        app:layout_constraintTop_toBottomOf="@+id/TvEquipment"
+        app:tint="@color/black" />
+
+    <ImageButton
+        android:id="@+id/btnDesLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="28dp"
+        android:background="@drawable/roundedcorner"
+        android:contentDescription="@string/likebutton"
+        android:src="@drawable/ic_baseline_thumb_down_alt_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TvEquipment"
+        app:tint="@color/black" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -69,12 +69,10 @@
         android:name="com.example.deskbookingappllication.ui.FavoritesFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favourite">
+
         <action
-            android:id="@+id/action_favorites_to_reservation"
-            app:destination="@id/desks" />
-        <action
-            android:id="@+id/action_favorites_to_userProfile"
-            app:destination="@id/userProfile" />
+            android:id="@+id/action_favorites_to_bookingFragment"
+            app:destination="@id/bookingFragment" />
     </fragment>
     <fragment
         android:id="@+id/register"

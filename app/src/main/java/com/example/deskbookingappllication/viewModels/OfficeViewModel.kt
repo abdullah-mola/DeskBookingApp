@@ -1,4 +1,4 @@
-package com.example.deskbookingappllication.model.viewModels
+package com.example.deskbookingappllication.viewModels
 
 import android.app.Application
 import android.util.Log
@@ -7,23 +7,28 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.deskbookingappllication.api.RetrofitInstance
-import com.example.deskbookingappllication.model.Comment
+import com.example.deskbookingappllication.model.Office
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.io.IOException
 
-class AdminViewModel(application: Application) : AndroidViewModel(application) {
+class OfficeViewModel(application: Application) : AndroidViewModel(
+    application
+) {
+    private val TAG = "OfficeViewModel"
 
-    private val TAG = "AdminViewModel"
-    private var commentList = MutableLiveData<List<Comment>>()
-    val comment: LiveData<List<Comment>> get() = commentList
+    //    private var _office = MutableLiveData<String>()
+//    val office :LiveData<String> get() = _office
+    private var _officeList = MutableLiveData<List<Office>>()
+    val officeList: LiveData<List<Office>> get() = _officeList
 
-    fun loadComments(id:String) {
+    fun loadOffices() {
         viewModelScope.launch {
             val response = try {
-                RetrofitInstance.deskApi.getListOfComments(id)
+                RetrofitInstance.officeApi.getOfficeList()
+
             } catch (e: IOException) {
                 Log.e(TAG, "IOException, you might not have internet connection")
                 null
@@ -33,11 +38,14 @@ class AdminViewModel(application: Application) : AndroidViewModel(application) {
             }
             if (response?.body() != null && response.isSuccessful) {
                 withContext(Dispatchers.Main) {
-                    commentList.value = response.body()
+                    _officeList.value = response.body()!!
+
                 }
             } else {
                 Log.e(TAG, "Response not successful")
             }
         }
     }
+
+
 }

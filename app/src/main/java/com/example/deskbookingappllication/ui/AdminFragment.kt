@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.deskbookingappllication.databinding.FragmentAdminBinding
-import com.example.deskbookingappllication.model.viewModels.AdminViewModel
+import com.example.deskbookingappllication.viewModels.AdminViewModel
 import com.example.deskbookingappllication.rcadapters.RvCommentAdapter
 import com.example.deskbookingappllication.rcadapters.RvDeskAdapter
 

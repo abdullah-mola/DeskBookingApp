@@ -13,13 +13,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.deskbookingappllication.api.RetrofitInstance
 import com.example.deskbookingappllication.databinding.FragmentDesksBinding
 import com.example.deskbookingappllication.model.Office
-import com.example.deskbookingappllication.model.viewModels.DeskViewModel
+import com.example.deskbookingappllication.viewModels.DeskViewModel
 import com.example.deskbookingappllication.rcadapters.RvDeskAdapter
 import com.google.gson.Gson
 
 class DesksFragment : Fragment() {
     private val deskViewModel: DeskViewModel by activityViewModels()
-    private val args: DesksFragmentArgs by navArgs<DesksFragmentArgs>()
+    private val args: DesksFragmentArgs by navArgs()
     private val deskAdapter: RvDeskAdapter = RvDeskAdapter()
     private var _binding: FragmentDesksBinding? = null
     private val binding get() = _binding!!

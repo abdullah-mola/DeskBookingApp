@@ -9,10 +9,13 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.deskbookingappllication.api.RetrofitInstance
 import com.example.deskbookingappllication.databinding.FragmentFavouriteBinding
-import com.example.deskbookingappllication.model.viewModels.DeskViewModel
+import com.example.deskbookingappllication.viewModels.DeskViewModel
 import com.example.deskbookingappllication.rcadapters.RvDeskAdapter
+import com.google.gson.Gson
 
 class FavoritesFragment : Fragment() {
     private val deskViewModel: DeskViewModel by activityViewModels()
@@ -31,7 +34,6 @@ class FavoritesFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setUpRecyclerView()
 
         deskViewModel.desks.observe(viewLifecycleOwner) {
@@ -41,7 +43,9 @@ class FavoritesFragment : Fragment() {
 
         deskViewModel.loadFavouriteDesks()
         deskAdapter.click {
-
+        RetrofitInstance.deskId = it.desk_id
+            Navigation.findNavController(binding.root).navigate(FavoritesFragmentDirections.actionFavoritesToBookingFragment(
+                Gson().toJson(it)))
         }
 
 

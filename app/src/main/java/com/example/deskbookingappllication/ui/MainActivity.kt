@@ -7,9 +7,6 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -20,7 +17,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.deskbookingappllication.R
 import com.example.deskbookingappllication.databinding.ActivityMainBinding
-import com.example.deskbookingappllication.model.viewModels.UserViewModel
+import com.example.deskbookingappllication.viewModels.UserViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var _binding: ActivityMainBinding

@@ -1,34 +1,32 @@
-package com.example.deskbookingappllication.model.viewModels
+package com.example.deskbookingappllication.viewModels
 
 import android.app.Application
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.deskbookingappllication.api.RetrofitInstance
-import com.example.deskbookingappllication.model.Office
+import com.example.deskbookingappllication.model.Book
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.io.IOException
 
-class OfficeViewModel(application: Application) : AndroidViewModel(
+class BookingViewModel(application: Application) : AndroidViewModel(
     application
 ) {
-    private val TAG = "OfficeViewModel"
-//    private var _office = MutableLiveData<String>()
-//    val office :LiveData<String> get() = _office
-    private var _officeList = MutableLiveData<List<Office>>()
-    val officeList: LiveData<List<Office>> get() = _officeList
+    val TAG = "BookingViewModel"
+    private var _statusCode = MutableLiveData<Int>()
+    val statusCode: LiveData<Int> get() = _statusCode
+    private var _book = MutableLiveData<Book>()
+    val book: LiveData<Book> get() = _book
 
-    fun loadOffices() {
-        viewModelScope.launch {
+    fun booking(booking: Book) {
+        viewModelScope.launch(Dispatchers.IO) {
             val response = try {
-                RetrofitInstance.officeApi.getOfficeList()
-
+                RetrofitInstance.deskApi.bookADesk(booking)
             } catch (e: IOException) {
                 Log.e(TAG, "IOException, you might not have internet connection")
                 null
@@ -38,14 +36,19 @@ class OfficeViewModel(application: Application) : AndroidViewModel(
             }
             if (response?.body() != null && response.isSuccessful) {
                 withContext(Dispatchers.Main) {
-                    _officeList.value = response.body()!!
+
+                    _book.value = response.body()
+
+                    _statusCode.value = response.code()
 
                 }
+
             } else {
-                Log.e(TAG, "Response not successful")
+                withContext(Dispatchers.Main)
+                {
+                    _statusCode.value = response?.code()
+                }
             }
         }
     }
-
-
 }

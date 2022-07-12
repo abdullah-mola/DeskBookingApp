@@ -1,4 +1,4 @@
-package com.example.deskbookingappllication.model.viewModels
+package com.example.deskbookingappllication.viewModels
 
 import android.app.Application
 import android.util.Log
@@ -64,14 +64,36 @@ class DeskViewModel(application: Application) : AndroidViewModel(
                 Log.e(TAG, "HttpException, unexpected response")
                 null
             }
-            if (response?.body() != null && response.isSuccessful) {
+            if (response?.isSuccessful!!) {
                 withContext(Dispatchers.Main) {
-                    _desk.value = response.body()!!
                     _deskStatusCode.value = response.code()
+                    Log.d(TAG, "setDeskAsFavourite: ${response.code()}")
 
                 }
+            } else {
+                Log.e(TAG, "Response not successful")
+            }
+        }
+    }
 
+    fun removeDeskFromFavourite(desk: DeskId) {
+        viewModelScope.launch {
+            val response = try {
+                RetrofitInstance.deskApi.removeDeskFromFavorite(desk)
 
+            } catch (e: IOException) {
+                Log.e(TAG, "IOException, you might not have internet connection")
+                null
+            } catch (e: HttpException) {
+                Log.e(TAG, "HttpException, unexpected response")
+                null
+            }
+            if (response?.isSuccessful!!) {
+                withContext(Dispatchers.Main) {
+                    _deskStatusCode.value = response.code()
+                    Log.d(TAG, "removeDeskFromFavourite: ${response.code()}")
+
+                }
             } else {
                 Log.e(TAG, "Response not successful")
             }
